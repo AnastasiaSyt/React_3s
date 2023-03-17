@@ -3,13 +3,11 @@
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: start;
     padding: 16px;
     gap: 16px;
 
     width: 392px;
-    height: 488px;
 
     background: #181A2A;
     border: 1px solid #242535;
@@ -17,10 +15,15 @@
 
     font-family: 'Work Sans';
     font-style: normal;
+
+    margin-bottom: 20px;
+}
+
+.card:hover{
+    background: linear-gradient(180deg, rgba(75, 107, 251, 0.4) 0%, rgba(24, 26, 42, 0.4) 100%);
 }
 
 .card_img {
-    /* background: url(../assets/1.jpg); */
     width: 360px;
     height: 240px;
     border-radius: 8px;
@@ -63,8 +66,27 @@
 
 .author {
     font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+
+.author_img {
+    margin-right: 10px;
 }
 
 .date {
     font-weight: 400;
+    margin-left: 20px;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card_info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
