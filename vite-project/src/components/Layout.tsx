@@ -4,9 +4,6 @@ import Footer from './Footer';
 import Header from './Header';
 
 class Layout extends React.Component {
-  constructor(props: {} | Readonly<{}>) {
-    super(props);
-  }
   render() {
     return (
       <>

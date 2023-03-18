@@ -4,9 +4,6 @@ import '../styles/Header.css';
 import SearchBar from './SearchBar';
 
 class Header extends React.Component {
-  constructor(props: {} | Readonly<{}>) {
-    super(props);
-  }
   render() {
     return (
       <div className="header">

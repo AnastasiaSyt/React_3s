@@ -2,9 +2,14 @@ import { CardData } from '../cards_data';
 import React from 'react';
 import '../styles/Card.css';
 import CardItem from './CardItem';
+import { TCardItem } from 'types/card_type';
 
-class Cards extends React.Component {
-  constructor(props) {
+interface CardState {
+  cards: TCardItem[];
+}
+
+class Cards extends React.Component<object, CardState> {
+  constructor(props: object) {
     super(props);
     this.state = {
       cards: CardData,
