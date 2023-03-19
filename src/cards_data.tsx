@@ -2,10 +2,6 @@ export const CardData = [
   {
     id: 1,
     image: '../public/1.jpg',
-    tags: [
-      { tag: 'nature', id: 1 },
-      { tag: 'forest', id: 2 },
-    ],
     title: 'Nature is a teacher – Just sit quietly under a tree',
     person_img: '../public/tracy.png',
     person: 'Tracey Wilson',
@@ -14,10 +10,6 @@ export const CardData = [
   {
     id: 2,
     image: '../public/2.jpg',
-    tags: [
-      { tag: 'nature', id: 3 },
-      { tag: 'clouds', id: 4 },
-    ],
     title: 'Seeing with “fresh eyes” – A deeper nature experience',
     person_img: '../public/jason.png',
     person: 'Jason Francisco',
@@ -26,7 +18,6 @@ export const CardData = [
   {
     id: 3,
     image: '../public/3.jpg',
-    tags: [{ tag: 'urban', id: 5 }],
     title: 'A Quick Thought on The Nature of Travel',
     person_img: '../public/lizzy.png',
     person: 'Elizabeth Slavin',
@@ -35,7 +26,6 @@ export const CardData = [
   {
     id: 4,
     image: '../public/4.jpg',
-    tags: [{ tag: 'urban', id: 6 }],
     title: 'Best Things to do in Madrid, Spain',
     person_img: '../public/ernie.png',
     person: 'Ernie Smithn',
@@ -44,10 +34,6 @@ export const CardData = [
   {
     id: 5,
     image: '../public/5.jpg',
-    tags: [
-      { tag: 'nature', id: 7 },
-      { tag: 'desert', id: 8 },
-    ],
     title: 'Sahara Morocco: Visit the Merzouga Desert in a 3-Day Tour',
     person_img: '../public/eric.png',
     person: 'Eric Smith',
@@ -56,7 +42,6 @@ export const CardData = [
   {
     id: 6,
     image: '../public/6.jpg',
-    tags: [{ tag: 'nature', id: 9 }],
     title: 'Earth’s intelligence: Being pulled toward the heart of the world',
     person_img: '../public/tracy.png',
     person: 'Tracey Wilson',
@@ -65,10 +50,6 @@ export const CardData = [
   {
     id: 7,
     image: '../public/7.jpg',
-    tags: [
-      { tag: 'nature', id: 10 },
-      { tag: 'sea', id: 11 },
-    ],
     title: 'The hug of homecoming: Hedonism in the natural world',
     person_img: '../public/jason.png',
     person: 'Jason Francisco',
@@ -77,10 +58,6 @@ export const CardData = [
   {
     id: 8,
     image: '../public/8.png',
-    tags: [
-      { tag: 'nature', id: 12 },
-      { tag: 'sea', id: 13 },
-    ],
     title: 'Nature Connection Exercise – Perceive and Receive',
     person_img: '../public/lizzy.png',
     person: 'Elizabeth Slavin',
@@ -89,7 +66,6 @@ export const CardData = [
   {
     id: 9,
     image: '../public/9.jpg',
-    tags: [{ tag: 'urban', id: 14 }],
     title: 'Golden Gate Bridge – History, Construction, & Facts',
     person_img: '../public/ernie.png',
     person: 'Ernie Smith',
