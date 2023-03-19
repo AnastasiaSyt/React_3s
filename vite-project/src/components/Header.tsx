@@ -24,7 +24,7 @@ class Header extends React.Component {
               </Link>
             </li>
           </ul>
-          <SearchBar></SearchBar>
+          <SearchBar />
         </div>
       </div>
     );

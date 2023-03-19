@@ -1,45 +1,23 @@
 import React from 'react';
 
-
-interface SearchBarState {
-  value: string;
-}
-
-export default class SearchBar extends React.Component<object, SearchBarState> {
-  searchData: { value: string };
-
-  constructor(props: object) {
-    super(props);
-    this.onChangeValue = this.onChangeValue.bind(this);
-    this.state = {
-      value: '',
-    };
-    this.searchData = { value: '' };
-  }
-
-  onChangeValue(e: { target: { value: string } }) {
-    this.setState({ value: e.target.value });
-  }
+class SearchBar extends React.Component {
+  state = {
+    searchValue: '',
+  };
 
   componentDidMount() {
-    const storageValue = localStorage.getItem('value');
-
-    if (storageValue) {
-      this.searchData = JSON.parse(storageValue);
-
-      this.setState({
-        value: this.searchData?.value,
-      });
-    } else {
-      this.setState({
-        value: '',
-      });
-    }
+    const searchValue = localStorage.getItem('searchValue');
+    this.setState({ searchValue });
   }
 
-  componentDidUpdate(prevState: Readonly<SearchBarState>): void {
-    localStorage.setItem('value', JSON.stringify(prevState));
-  }
+  handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const input = event.target;
+    const value = input.value;
+    this.setState({ [input.name]: value });
+
+    const { searchValue } = this.state;
+    localStorage.setItem('searchValue', searchValue);
+  };
 
   render() {
     return (
@@ -48,12 +26,15 @@ export default class SearchBar extends React.Component<object, SearchBarState> {
           <input
             className="search_input"
             type="search"
-            placeholder="Search..."
-            value={this.state.value}
-            onChange={this.onChangeValue}
+            name="searchValue" 
+            value={this.state.searchValue} 
+            onChange={this.handleChange}
           />
         </form>
       </div>
     );
   }
+
 }
+
+export default SearchBar;
