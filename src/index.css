@@ -49,6 +49,9 @@ select {
 .wrapper {
   max-width: 1216px;
   margin: 0 auto;
+  color: white;
+  font-family: 'Work Sans';
+  font-size: 18px;
 }
 
 .main_title {
@@ -59,4 +62,20 @@ select {
   line-height: 28px;
   color: #FFFFFF;
   margin-bottom: 32px;
+}
+
+html,
+body {
+  height: 100%;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.App {
+  flex: 1 0 auto;
+}
+.footer {
+  flex: 0 0 auto;
 }
