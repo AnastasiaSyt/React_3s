@@ -1,0 +1,81 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+body {
+  background: #181A2A;
+}
+
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+.wrapper {
+  max-width: 1216px;
+  margin: 0 auto;
+  color: white;
+  font-family: 'Work Sans';
+  font-size: 18px;
+}
+
+.main_title {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  color: #FFFFFF;
+  margin-bottom: 32px;
+}
+
+html,
+body {
+  height: 100%;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.App {
+  flex: 1 0 auto;
+}
+.footer {
+  flex: 0 0 auto;
+}
