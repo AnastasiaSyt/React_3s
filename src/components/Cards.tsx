@@ -2,7 +2,7 @@ import { CardData } from '../cards_data';
 import React from 'react';
 import '../styles/Card.css';
 import CardItem from './CardItem';
-import { TCardItem } from 'types/card_type';
+import { type TCardItem } from 'types/card_type';
 
 interface CardState {
   cards: TCardItem[];
@@ -15,6 +15,7 @@ class Cards extends React.Component<object, CardState> {
       cards: CardData,
     };
   }
+
   render() {
     return (
       <div className="wrapper">

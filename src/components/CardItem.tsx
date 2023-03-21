@@ -1,5 +1,5 @@
 import React from 'react';
-import { TCardItem } from '../types/card_type';
+import { type TCardItem } from '../types/card_type';
 import '../styles/Card.css';
 
 interface CardItemProps {
@@ -7,9 +7,6 @@ interface CardItemProps {
 }
 
 class CardItem extends React.Component<CardItemProps, object> {
-  constructor(props: CardItemProps) {
-    super(props);
-  }
   render() {
     return (
       <div className="card">

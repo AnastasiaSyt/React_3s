@@ -26,15 +26,14 @@ class SearchBar extends React.Component {
           <input
             className="search_input"
             type="search"
-            name="searchValue" 
-            value={this.state.searchValue} 
+            name="searchValue"
+            value={this.state.searchValue}
             onChange={this.handleChange}
           />
         </form>
       </div>
     );
   }
-
 }
 
 export default SearchBar;
