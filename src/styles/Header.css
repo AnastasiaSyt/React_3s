@@ -1,0 +1,31 @@
+.header {
+    background: #141624;
+    border-bottom: 1px solid #242535;
+    margin-bottom: 48px;
+    padding: 20px 0;
+}
+
+.header_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header_nav {
+    display: flex;
+    color: white;
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.header_nav_item {
+    margin-right: 30px;
+}
+
+.header_link {
+    text-decoration: none;
+    color: white;
+}
