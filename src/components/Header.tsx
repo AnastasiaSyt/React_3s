@@ -23,6 +23,11 @@ class Header extends React.Component {
                 About As
               </Link>
             </li>
+            <li className="header_nav_item">
+              <Link to="/form" className="header_link">
+                Form
+              </Link>
+            </li>
           </ul>
           <SearchBar />
         </div>

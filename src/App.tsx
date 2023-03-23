@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import About from './pages/About';
 import Main from './pages/Main';
 import Layout from './components/Layout';
+import Form from './pages/Form';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route index element={<Main />} />
           <Route path="main" element={<Main />} />
           <Route path="about" element={<About />} />
+          <Route path="form" element={<Form />} />
           <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>

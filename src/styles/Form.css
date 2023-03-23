@@ -1,0 +1,9 @@
+.form_post{
+    background: linear-gradient(180deg, rgba(75, 107, 251, 0.4) 0%, rgba(24, 26, 42, 0.4) 100%);
+    border: 1px solid #242535;
+    border-radius: 12px;
+    padding: 30px;
+
+    display: flex;
+    flex-direction: column;
+}
