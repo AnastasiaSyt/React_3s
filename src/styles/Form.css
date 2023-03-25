@@ -135,3 +135,13 @@
 .input-file input[type=file]:disabled + span {
 	background-color: #eee;
 }
+
+.form_label{
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.error{
+  color: red;
+  margin-bottom: 10px;
+}

@@ -20,7 +20,13 @@ class CardItem extends React.Component {
                 alt="post image"
               />
             )} */}
-            {this.props.image && <img src={URL.createObjectURL(this.props.image)} alt="post image" />}
+            {this.props.image && (
+              <img
+                src={URL.createObjectURL(this.props.image)}
+                alt="post image"
+                className="card_img"
+              />
+            )}
           </div>
           <div className="card_title">{this.props.item.title}</div>
           <div className="card_info">

@@ -5,18 +5,25 @@ import '../styles/Card.css';
 
 interface FormState {
   posts: TNewPost[];
-  errors: {
-    title: string;
-  };
+  titleValue: string;
+  titleError: string;
+  dateValue: string;
+  dateError: string;
+  selectValue: string;
+  selectError: string;
+  checkboxValue: boolean;
+  checkboxError: string;
+  imageFile: File | null;
+  imageError: string;
 }
 
 interface TNewPost {
   id: Date;
-  image: string;
+  image: File;
   title: string;
   person_img: string;
   person: string;
-  date: Date;
+  date: string;
 }
 
 interface FormProps {
@@ -26,6 +33,12 @@ interface FormProps {
   authorRef: React.RefObject<HTMLSelectElement>;
   fileRef: React.RefObject<HTMLInputElement>;
 }
+
+// const options = [
+//   { value: 'option1', label: 'Option 1' },
+//   { value: 'option2', label: 'Option 2' },
+//   { value: 'option3', label: 'Option 3' },
+// ];
 
 class Form extends React.Component<FormProps, FormState> {
   titleRef: React.RefObject<HTMLInputElement>;
@@ -42,52 +55,155 @@ class Form extends React.Component<FormProps, FormState> {
     this.fileRef = React.createRef();
     this.state = {
       posts: [],
-      errors: {
-        title: '',
-        date: '',
-      },
+      titleValue: '',
+      titleError: '',
+      dateValue: '',
+      dateError: '',
+      selectValue: '',
+      selectError: '',
+      checkboxValue: false,
+      checkboxError: '',
+      imageFile: null,
+      imageError: '',
     };
   }
 
   handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    this.createPost();
+
+    this.validateForm();
   };
 
   createPost() {
     // Создание нового объекта Post на основе значений рефов
     const newPost: TNewPost = {
       id: new Date(),
-      image: this.fileRef.current.files[0],
-      title: this.titleRef.current.value,
+      image: this.fileRef.current!.files![0],
+      title: this.titleRef.current!.value,
       person_img: '../public/jason.png',
-      person: this.authorRef.current.value,
-      date: this.dateRef.current.value,
+      person: this.authorRef.current!.value,
+      date: this.dateRef.current!.value,
     };
     // Добавление нового поста в массив постов
     this.setState({ posts: [...this.state.posts, newPost] });
     // Очистка значений рефов после отправки формы
-    this.titleRef.current.value = '';
-    this.dateRef.current.value = '';
-    this.authorRef.current.value = '';
-    this.fileRef.current.value = null;
+    this.titleRef.current!.value = '';
+    this.dateRef.current!.value = '';
+    this.authorRef.current!.value = '';
+    this.fileRef.current!.files = null;
   }
 
   validateForm() {
-    // const errors = {};
-    if (this.titleRef.current?.value.trim() === '') {
-      this.state.errors.title = 'Name is required';
+    this.validateTitle();
+    this.validateDate();
+    this.validateSelect();
+    this.validateCheckbox();
+    this.validateFileImage();
+
+    // Если нет ошибок валидации, выполняем обработку успешной отправки формы
+    if (
+      this.state.titleError.length === 0 &&
+      this.state.dateError.length === 0 &&
+      this.state.selectError.length === 0 &&
+      this.state.checkboxError.length === 0
+    ) {
+      // Ваш код для обработки успешной отправки формы
+      this.createPost();
     }
-    if (this.state.date.trim() === '') {
-      Error.date = 'Email is required';
-    }
-    if (state.password.trim() === '') {
-      Error.password = 'Password is required';
-    }
-    setState({ ...state, Error });
   }
 
+  // checkErrors() {
+  //   // Если нет ошибок валидации, выполняем обработку успешной отправки формы
+  //   if (
+  //     this.state.titleError.length === 0 &&
+  //     this.state.dateError.length === 0 &&
+  //     this.state.selectError.length === 0 &&
+  //     this.state.checkboxError.length === 0
+  //   ) {
+  //     // Ваш код для обработки успешной отправки формы
+  //     this.createPost();
+  //   }
+  // }
+
+  validateTitle() {
+    const titleValue = this.titleRef.current?.value ?? '';
+
+    if (titleValue.trim().length === 0) {
+      this.setState({ titleError: 'This field is required' });
+      return;
+    }
+
+    if (!/^[a-zA-Z0-9]+$/.test(titleValue)) {
+      this.setState({ titleError: 'Only letters and numbers are allowed' });
+    }
+  }
+
+  validateDate() {
+    const dateValue = this.dateRef.current?.value ?? '';
+    if (dateValue.trim().length === 0) {
+      this.setState({ dateError: 'This field is required' });
+    } else {
+      this.setState({ dateError: '' });
+    }
+  }
+
+  validateSelect() {
+    const selectValue = this.authorRef.current?.value ?? '';
+
+    if (selectValue.length === 0) {
+      this.setState({ selectError: 'This field is required' });
+    } else {
+      this.setState({ selectError: '' });
+    }
+  }
+
+  validateCheckbox() {
+    if (!this.state.checkboxValue) {
+      this.setState({ checkboxError: 'This field is required' });
+    } else {
+      this.setState({ checkboxError: '' });
+    }
+  }
+
+  validateFileImage() {
+    const imageFile = this.fileRef.current!.files![0];
+    if (imageFile == null) {
+      this.setState({ imageError: 'This field is required' });
+    } else {
+      this.setState({ imageError: '' });
+    }
+  }
+
+  handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    this.setState({ checkboxValue: event.target.checked, checkboxError: '' });
+  };
+
+  handleImageChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    const files = event.target.files;
+
+    if (files?.[0] != null) {
+      this.setState({ imageFile: files[0], imageError: '' });
+    }
+  };
+
+  handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>): void => {
+    this.setState({ selectValue: event.target.value });
+  };
+
   render() {
+    const {
+      titleValue,
+      titleError,
+      dateValue,
+      dateError,
+      selectValue,
+      selectError,
+      checkboxValue,
+      checkboxError,
+      imageFile,
+      imageError,
+    } = this.state;
+
     return (
       <div className="App">
         <div className="wrapper">
@@ -96,39 +212,103 @@ class Form extends React.Component<FormProps, FormState> {
           <div className="form">
             <div>
               <form className="form_post" onSubmit={this.handleSubmit}>
-                <label htmlFor="title">Title for post:</label>
-                <input type="text" id="title" ref={this.titleRef} className="form_input" />
+                <div>
+                  <label htmlFor="title" className="form_label">
+                    Title for post:
+                  </label>
+                  <input
+                    type="text"
+                    id="title"
+                    ref={this.titleRef}
+                    className="form_input"
+                    onChange={(event) => {
+                      this.setState({ titleValue: event.target.value, titleError: '' });
+                    }}
+                  />
+                  {titleError.length > 0 && <div className="error">{titleError}</div>}
+                </div>
 
-                <label htmlFor="date">date of post:</label>
-                <input type="date" id="date" ref={this.dateRef} className="form_input" />
+                <div>
+                  <label htmlFor="date" className="form_label">
+                    Date of post:
+                  </label>
+                  <input
+                    type="date"
+                    id="date"
+                    ref={this.dateRef}
+                    className="form_input"
+                    value={dateValue}
+                    onChange={(event) => {
+                      this.setState({ dateValue: event.target.value });
+                    }}
+                  />
+                  {dateError.length > 0 && <div className="error">{dateError}</div>}
+                </div>
 
-                <label htmlFor="author">choose an author:</label>
-                <select type="select" id="author" ref={this.authorRef} className="form_input">
-                  <option>Select author</option>
-                  <option value="Tracey Wilson">Tracey Wilson</option>
-                  <option value="Jason Francisco">Jason Francisco</option>
-                  <option value="Elizabeth Slavin">Elizabeth Slavin</option>
-                  <option value="Ernie Smithn">Ernie Smithn</option>
-                  <option value="Eric Smith">Eric Smith</option>
-                </select>
+                <div>
+                  <label htmlFor="author" className="form_label">
+                    Choose an author:
+                  </label>
+                  <select
+                    id="author"
+                    ref={this.authorRef}
+                    className="form_input"
+                    value={selectValue}
+                    onChange={this.handleSelectChange}
+                  >
+                    <option value="">Select author</option>
+                    <option value="Tracey Wilson">Tracey Wilson</option>
+                    <option value="Jason Francisco">Jason Francisco</option>
+                    <option value="Elizabeth Slavin">Elizabeth Slavin</option>
+                    <option value="Ernie Smithn">Ernie Smithn</option>
+                    <option value="Eric Smith">Eric Smith</option>
+                    {/* <option value="">Select an option</option> */}
+                    {/* {options.map((option) => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))} */}
+                  </select>
+                  {selectError.length > 0 && <div className="error">{selectError}</div>}
+                </div>
 
-                <label htmlFor="publish">publish this post</label>
-                <input type="checkbox" id="publish" ref={this.publishRef} className="form_input" />
+                <div>
+                  <label htmlFor="publish" className="form_label">
+                    Publish this post
+                  </label>
+                  <input
+                    type="checkbox"
+                    id="publish"
+                    ref={this.publishRef}
+                    className="form_input"
+                    checked={checkboxValue}
+                    onChange={this.handleCheckboxChange}
+                  />
+                  {checkboxError.length > 0 && <div className="error">{checkboxError}</div>}
+                </div>
 
                 {/* <label htmlFor="file">load image for this post</label>
                 <input type="file" id="file" ref={this.fileRef} className="form_input" /> */}
 
-                <label className="input-file">
-                  <input type="file" id="file" ref={this.fileRef} />
-                  <span>load image for this post</span>
-                </label>
+                <div>
+                  <label className="input-file">
+                    <input
+                      type="file"
+                      id="file"
+                      ref={this.fileRef}
+                      accept="image/*"
+                      onChange={this.handleImageChange}
+                    />
+                    <span>load image for this post</span>
+                  </label>
+                  {imageError.length > 0 && <div className="error">{imageError}</div>}
+                </div>
 
                 <button type="submit" className="button_submit">
                   Submit
                 </button>
               </form>
-              {/* Отображение всех созданных постов */}
-              {/* <CardItem key={index} item={this.post} /> */}
+
               <div className="cards">
                 {this.state.posts.map((post, index) => (
                   <CardItem key={index} item={post} image={post.image} />
