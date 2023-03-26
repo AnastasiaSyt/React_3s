@@ -19,8 +19,8 @@ interface FormState {
 }
 
 interface TNewPost {
-  id: Date;
-  image: File;
+  id: number;
+  imageCard: File;
   title: string;
   person_img: string;
   person: string;
@@ -82,8 +82,8 @@ class Form extends React.Component<FormProps, FormState> {
     const { isValid } = this.state;
     // Создание нового объекта Post на основе значений рефов
     const newPost: TNewPost = {
-      id: new Date(),
-      image: this.fileRef.current!.files![0],
+      id: Number(new Date()),
+      imageCard: this.fileRef.current!.files![0],
       title: this.titleRef.current!.value,
       person_img: '../public/jason.png',
       person: this.authorRef.current!.value,
@@ -327,7 +327,8 @@ class Form extends React.Component<FormProps, FormState> {
               {!isValid && <div>You have not completed all fields</div>} */}
               <div className="cards">
                 {this.state.posts.map((post, index) => (
-                  <CardItem key={index} item={post} image={post.image} />
+                  <CardItem key={index} item={post} imageCard={post.imageCard} />
+                  // <CardItem key={index} item={post} />
                 ))}
               </div>
             </div>
