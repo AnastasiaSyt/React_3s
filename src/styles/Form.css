@@ -26,6 +26,10 @@
     background: #2d49c7;
 }
 
+.button_submit:disabled{
+  background: #575757;
+}
+
 .form_input{
     background: #181A2A;
     border: 1px solid #3B3C4A;

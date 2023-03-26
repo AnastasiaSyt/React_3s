@@ -15,6 +15,7 @@ interface FormState {
   checkboxError: string;
   imageFile: File | null;
   imageError: string;
+  isValid: boolean;
 }
 
 interface TNewPost {
@@ -56,25 +57,29 @@ class Form extends React.Component<FormProps, FormState> {
     this.state = {
       posts: [],
       titleValue: '',
-      titleError: '',
+      titleError: ' ',
       dateValue: '',
-      dateError: '',
+      dateError: ' ',
       selectValue: '',
-      selectError: '',
+      selectError: ' ',
       checkboxValue: false,
-      checkboxError: '',
+      checkboxError: ' ',
       imageFile: null,
-      imageError: '',
+      imageError: ' ',
+      isValid: false,
     };
   }
 
   handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
-
+    console.log(this.state.titleError.length);
+    console.log('значение до проверки', this.state.isValid);
     this.validateForm();
+    console.log('после проверки', this.state.isValid);
   };
 
   createPost() {
+    const { isValid } = this.state;
     // Создание нового объекта Post на основе значений рефов
     const newPost: TNewPost = {
       id: new Date(),
@@ -85,12 +90,17 @@ class Form extends React.Component<FormProps, FormState> {
       date: this.dateRef.current!.value,
     };
     // Добавление нового поста в массив постов
-    this.setState({ posts: [...this.state.posts, newPost] });
+    if (isValid) {
+      this.setState({ posts: [...this.state.posts, newPost] });
+    } else if (!isValid) {
+      alert('Invalid');
+    }
     // Очистка значений рефов после отправки формы
     this.titleRef.current!.value = '';
     this.dateRef.current!.value = '';
     this.authorRef.current!.value = '';
-    this.fileRef.current!.files = null;
+    this.publishRef.current!.checked = false;
+    this.fileRef.current!.value = '';
   }
 
   validateForm() {
@@ -105,9 +115,17 @@ class Form extends React.Component<FormProps, FormState> {
       this.state.titleError.length === 0 &&
       this.state.dateError.length === 0 &&
       this.state.selectError.length === 0 &&
-      this.state.checkboxError.length === 0
+      this.state.checkboxError.length === 0 &&
+      this.state.imageError.length === 0
     ) {
       // Ваш код для обработки успешной отправки формы
+
+      this.setState({ isValid: true });
+      console.log('поставить true', this.state.isValid);
+      this.createPost();
+    } else {
+      this.setState({ isValid: false });
+      console.log('поставить false', this.state.isValid);
       this.createPost();
     }
   }
@@ -131,6 +149,8 @@ class Form extends React.Component<FormProps, FormState> {
     if (titleValue.trim().length === 0) {
       this.setState({ titleError: 'This field is required' });
       return;
+    } else {
+      this.setState({ titleError: '' });
     }
 
     if (!/^[a-zA-Z0-9]+$/.test(titleValue)) {
@@ -187,22 +207,11 @@ class Form extends React.Component<FormProps, FormState> {
   };
 
   handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>): void => {
-    this.setState({ selectValue: event.target.value });
+    this.setState({ selectValue: event.target.value, selectError: '' });
   };
 
   render() {
-    const {
-      titleValue,
-      titleError,
-      dateValue,
-      dateError,
-      selectValue,
-      selectError,
-      checkboxValue,
-      checkboxError,
-      imageFile,
-      imageError,
-    } = this.state;
+    const { titleError, dateError, selectError, checkboxError, imageError } = this.state;
 
     return (
       <div className="App">
@@ -237,9 +246,9 @@ class Form extends React.Component<FormProps, FormState> {
                     id="date"
                     ref={this.dateRef}
                     className="form_input"
-                    value={dateValue}
+                    // value={dateValue}
                     onChange={(event) => {
-                      this.setState({ dateValue: event.target.value });
+                      this.setState({ dateValue: event.target.value, dateError: '' });
                     }}
                   />
                   {dateError.length > 0 && <div className="error">{dateError}</div>}
@@ -253,7 +262,7 @@ class Form extends React.Component<FormProps, FormState> {
                     id="author"
                     ref={this.authorRef}
                     className="form_input"
-                    value={selectValue}
+                    // value={selectValue}
                     onChange={this.handleSelectChange}
                   >
                     <option value="">Select author</option>
@@ -281,7 +290,7 @@ class Form extends React.Component<FormProps, FormState> {
                     id="publish"
                     ref={this.publishRef}
                     className="form_input"
-                    checked={checkboxValue}
+                    // checked={checkboxValue}
                     onChange={this.handleCheckboxChange}
                   />
                   {checkboxError.length > 0 && <div className="error">{checkboxError}</div>}
@@ -308,7 +317,14 @@ class Form extends React.Component<FormProps, FormState> {
                   Submit
                 </button>
               </form>
-
+              {/* {isValid && (
+                <div className="cards">
+                  {this.state.posts.map((post, index) => (
+                    <CardItem key={index} item={post} image={post.image} />
+                  ))}
+                </div>
+              )}
+              {!isValid && <div>You have not completed all fields</div>} */}
               <div className="cards">
                 {this.state.posts.map((post, index) => (
                   <CardItem key={index} item={post} image={post.image} />
