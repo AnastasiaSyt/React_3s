@@ -14,7 +14,18 @@ function App() {
           <Route index element={<Main />} />
           <Route path="main" element={<Main />} />
           <Route path="about" element={<About />} />
-          <Route path="form" element={<Form />} />
+          <Route
+            path="form"
+            element={
+              <Form
+                titleRef={React.createRef()}
+                dateRef={React.createRef()}
+                publishRef={React.createRef()}
+                authorRef={React.createRef()}
+                fileRef={React.createRef()}
+              />
+            }
+          />
           <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
