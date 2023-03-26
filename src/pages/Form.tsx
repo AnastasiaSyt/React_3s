@@ -35,36 +35,12 @@ class Form extends React.Component<FormProps, FormState> {
 
   handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    console.log(
-      'значение до проверки',
-      this.state.isValid,
-      this.state.titleError.length,
-      this.state.dateError.length,
-      this.state.selectError.length,
-      this.state.checkboxError.length,
-      this.state.imageError.length,
-      this.state.titleValue.trim().length,
-      this.state.checkboxValue
-    );
     this.validateForm();
-    console.log(
-      'после проверки',
-      this.state.isValid,
-      this.state.isValid,
-      this.state.titleError.length,
-      this.state.dateError.length,
-      this.state.selectError.length,
-      this.state.checkboxError.length,
-      this.state.imageError.length,
-      this.state.imageError,
-      this.state.titleValue.trim().length,
-      this.state.checkboxValue
-    );
   };
 
   createPost() {
     const { isValid } = this.state;
-    // Создание нового объекта Post на основе значений рефов
+
     const newPost: TNewPost = {
       id: Number(new Date()),
       imageCard: this.fileRef.current!.files![0],
@@ -73,13 +49,13 @@ class Form extends React.Component<FormProps, FormState> {
       person: this.authorRef.current!.value,
       date: this.dateRef.current!.value,
     };
-    // Добавление нового поста в массив постов
-    if (isValid) {
+
+    if (isValid ?? false) {
       this.setState({ posts: [...this.state.posts, newPost] });
     } else if (!isValid) {
-      alert('Invalid');
+      alert('Form was not validated');
     }
-    // Очистка значений рефов после отправки формы
+
     this.titleRef.current!.value = '';
     this.dateRef.current!.value = '';
     this.authorRef.current!.value = '';
@@ -94,7 +70,6 @@ class Form extends React.Component<FormProps, FormState> {
     this.validateCheckbox();
     this.validateFileImage();
 
-    // Если нет ошибок валидации, выполняем обработку успешной отправки формы
     if (
       this.state.titleError.length === 0 &&
       this.state.dateError.length === 0 &&
@@ -102,15 +77,13 @@ class Form extends React.Component<FormProps, FormState> {
       this.state.checkboxError.length === 0 &&
       this.state.imageError.length === 0
     ) {
-      // Ваш код для обработки успешной отправки формы
-
-      this.setState({ isValid: true });
-      console.log('поставить true', this.state.isValid);
-      this.createPost();
+      this.setState({ isValid: true }, () => {
+        this.createPost();
+      });
     } else {
-      this.setState({ isValid: false });
-      console.log('поставить false', this.state.isValid);
-      this.createPost();
+      this.setState({ isValid: false }, () => {
+        this.createPost();
+      });
     }
   }
 
@@ -151,8 +124,6 @@ class Form extends React.Component<FormProps, FormState> {
   }
 
   validateCheckbox() {
-    // console.log(this.publishRef.current?.value);
-    // const checkboxValue = this.publishRef.current?.value ?? '';
     if (!this.state.checkboxValue) {
       this.setState({ checkboxError: 'This field is required' });
     } else {
