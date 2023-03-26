@@ -2,44 +2,7 @@ import React from 'react';
 import CardItem from '../components/CardItem';
 import '../styles/Form.css';
 import '../styles/Card.css';
-
-interface FormState {
-  posts: TNewPost[];
-  titleValue: string;
-  titleError: string;
-  dateValue: string;
-  dateError: string;
-  selectValue: string;
-  selectError: string;
-  checkboxValue: boolean;
-  checkboxError: string;
-  imageFile: File | null;
-  imageError: string;
-  isValid: boolean;
-}
-
-interface TNewPost {
-  id: number;
-  imageCard: File;
-  title: string;
-  person_img: string;
-  person: string;
-  date: string;
-}
-
-interface FormProps {
-  titleRef: React.RefObject<HTMLInputElement>;
-  dateRef: React.RefObject<HTMLInputElement>;
-  publishRef: React.RefObject<HTMLInputElement>;
-  authorRef: React.RefObject<HTMLSelectElement>;
-  fileRef: React.RefObject<HTMLInputElement>;
-}
-
-// const options = [
-//   { value: 'option1', label: 'Option 1' },
-//   { value: 'option2', label: 'Option 2' },
-//   { value: 'option3', label: 'Option 3' },
-// ];
+import { type TNewPost, type FormProps, type FormState } from '../types/form_type';
 
 class Form extends React.Component<FormProps, FormState> {
   titleRef: React.RefObject<HTMLInputElement>;
@@ -72,10 +35,31 @@ class Form extends React.Component<FormProps, FormState> {
 
   handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    console.log(this.state.titleError.length);
-    console.log('значение до проверки', this.state.isValid);
+    console.log(
+      'значение до проверки',
+      this.state.isValid,
+      this.state.titleError.length,
+      this.state.dateError.length,
+      this.state.selectError.length,
+      this.state.checkboxError.length,
+      this.state.imageError.length,
+      this.state.titleValue.trim().length,
+      this.state.checkboxValue
+    );
     this.validateForm();
-    console.log('после проверки', this.state.isValid);
+    console.log(
+      'после проверки',
+      this.state.isValid,
+      this.state.isValid,
+      this.state.titleError.length,
+      this.state.dateError.length,
+      this.state.selectError.length,
+      this.state.checkboxError.length,
+      this.state.imageError.length,
+      this.state.imageError,
+      this.state.titleValue.trim().length,
+      this.state.checkboxValue
+    );
   };
 
   createPost() {
@@ -130,19 +114,6 @@ class Form extends React.Component<FormProps, FormState> {
     }
   }
 
-  // checkErrors() {
-  //   // Если нет ошибок валидации, выполняем обработку успешной отправки формы
-  //   if (
-  //     this.state.titleError.length === 0 &&
-  //     this.state.dateError.length === 0 &&
-  //     this.state.selectError.length === 0 &&
-  //     this.state.checkboxError.length === 0
-  //   ) {
-  //     // Ваш код для обработки успешной отправки формы
-  //     this.createPost();
-  //   }
-  // }
-
   validateTitle() {
     const titleValue = this.titleRef.current?.value ?? '';
 
@@ -155,6 +126,8 @@ class Form extends React.Component<FormProps, FormState> {
 
     if (!/^[a-zA-Z0-9]+$/.test(titleValue)) {
       this.setState({ titleError: 'Only letters and numbers are allowed' });
+    } else {
+      this.setState({ titleError: '' });
     }
   }
 
@@ -178,6 +151,8 @@ class Form extends React.Component<FormProps, FormState> {
   }
 
   validateCheckbox() {
+    // console.log(this.publishRef.current?.value);
+    // const checkboxValue = this.publishRef.current?.value ?? '';
     if (!this.state.checkboxValue) {
       this.setState({ checkboxError: 'This field is required' });
     } else {
@@ -187,7 +162,7 @@ class Form extends React.Component<FormProps, FormState> {
 
   validateFileImage() {
     const imageFile = this.fileRef.current!.files![0];
-    if (imageFile == null) {
+    if (imageFile === null) {
       this.setState({ imageError: 'This field is required' });
     } else {
       this.setState({ imageError: '' });
@@ -195,7 +170,9 @@ class Form extends React.Component<FormProps, FormState> {
   }
 
   handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    this.setState({ checkboxValue: event.target.checked, checkboxError: '' });
+    console.log(event.target.checked);
+    this.setState({ checkboxValue: !event.target.checked, checkboxError: '' });
+    console.log(this.state.checkboxValue);
   };
 
   handleImageChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -246,7 +223,6 @@ class Form extends React.Component<FormProps, FormState> {
                     id="date"
                     ref={this.dateRef}
                     className="form_input"
-                    // value={dateValue}
                     onChange={(event) => {
                       this.setState({ dateValue: event.target.value, dateError: '' });
                     }}
@@ -262,7 +238,6 @@ class Form extends React.Component<FormProps, FormState> {
                     id="author"
                     ref={this.authorRef}
                     className="form_input"
-                    // value={selectValue}
                     onChange={this.handleSelectChange}
                   >
                     <option value="">Select author</option>
@@ -271,12 +246,6 @@ class Form extends React.Component<FormProps, FormState> {
                     <option value="Elizabeth Slavin">Elizabeth Slavin</option>
                     <option value="Ernie Smithn">Ernie Smithn</option>
                     <option value="Eric Smith">Eric Smith</option>
-                    {/* <option value="">Select an option</option> */}
-                    {/* {options.map((option) => (
-                      <option key={option.value} value={option.value}>
-                        {option.label}
-                      </option>
-                    ))} */}
                   </select>
                   {selectError.length > 0 && <div className="error">{selectError}</div>}
                 </div>
@@ -290,14 +259,10 @@ class Form extends React.Component<FormProps, FormState> {
                     id="publish"
                     ref={this.publishRef}
                     className="form_input"
-                    // checked={checkboxValue}
                     onChange={this.handleCheckboxChange}
                   />
                   {checkboxError.length > 0 && <div className="error">{checkboxError}</div>}
                 </div>
-
-                {/* <label htmlFor="file">load image for this post</label>
-                <input type="file" id="file" ref={this.fileRef} className="form_input" /> */}
 
                 <div>
                   <label className="input-file">
@@ -317,18 +282,10 @@ class Form extends React.Component<FormProps, FormState> {
                   Submit
                 </button>
               </form>
-              {/* {isValid && (
-                <div className="cards">
-                  {this.state.posts.map((post, index) => (
-                    <CardItem key={index} item={post} image={post.image} />
-                  ))}
-                </div>
-              )}
-              {!isValid && <div>You have not completed all fields</div>} */}
+
               <div className="cards">
                 {this.state.posts.map((post, index) => (
                   <CardItem key={index} item={post} imageCard={post.imageCard} />
-                  // <CardItem key={index} item={post} />
                 ))}
               </div>
             </div>
