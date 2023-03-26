@@ -149,3 +149,14 @@
   color: red;
   margin-bottom: 10px;
 }
+
+.valid{
+  color: #2acd48;
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.invalid{
+  color: #741616;
+  font-size: 14px;
+}

@@ -141,9 +141,7 @@ class Form extends React.Component<FormProps, FormState> {
   }
 
   handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    console.log(event.target.checked);
     this.setState({ checkboxValue: !event.target.checked, checkboxError: '' });
-    console.log(this.state.checkboxValue);
   };
 
   handleImageChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -254,6 +252,7 @@ class Form extends React.Component<FormProps, FormState> {
                 </button>
               </form>
 
+              {this.state.isValid && <div className="valid">A new card has been created</div>}
               <div className="cards">
                 {this.state.posts.map((post, index) => (
                   <CardItem key={index} item={post} imageCard={post.imageCard} />
