@@ -1,9 +1,35 @@
-import React from 'react';
+import React, { type MouseEventHandler } from 'react';
 import { Link } from 'react-router-dom';
-import SearchBar from './SearchBar';
 
-class Header extends React.Component {
+interface HeaderState {
+  items: Array<{ id: number; path: string; text: string }>;
+  active: number | null;
+}
+
+class Header extends React.Component<object, HeaderState> {
+  constructor(props: object) {
+    super(props);
+    this.state = {
+      items: [
+        { id: 0, path: '/main', text: 'Home' },
+        { id: 1, path: '/about', text: 'About As' },
+        { id: 2, path: '/form', text: 'Form' },
+      ],
+      active: null,
+    };
+  }
+
+  onClick = (event: { target: HTMLElement }) => {
+    const { target } = event;
+    if (target.dataset.index != null) {
+      this.setState({
+        active: +target.dataset.index,
+      });
+    }
+  };
+
   render() {
+    const { items, active } = this.state;
     return (
       <div className="header">
         <div className="header_wrapper wrapper">
@@ -13,23 +39,19 @@ class Header extends React.Component {
             </Link>
           </div>
           <ul className="header_nav">
-            <li className="header_nav_item">
-              <Link to="/main" className="header_link">
-                Home
-              </Link>
-            </li>
-            <li className="header_nav_item">
-              <Link to="/about" className="header_link">
-                About As
-              </Link>
-            </li>
-            <li className="header_nav_item">
-              <Link to="/form" className="header_link">
-                Form
-              </Link>
-            </li>
+            {items.map((item, index) => (
+              <li className="header_nav_item" key={item.id}>
+                <Link
+                  to={item.path}
+                  data-index={index}
+                  className={index === active ? 'active' : 'header_link'}
+                  onClick={this.onClick as unknown as MouseEventHandler<HTMLAnchorElement>}
+                >
+                  {item.text}
+                </Link>
+              </li>
+            ))}
           </ul>
-          <SearchBar />
         </div>
       </div>
     );

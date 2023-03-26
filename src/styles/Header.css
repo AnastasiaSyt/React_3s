@@ -29,3 +29,25 @@
     text-decoration: none;
     color: white;
 }
+
+.header_link:hover{
+    color:#2d49c7;
+}
+
+.header_link:active{
+    color: #2d49c7;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.header_link.active{
+    color: #2d49c7;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.active{
+    color: #2d49c7;
+    font-weight: bold;
+    text-decoration: underline;
+}

@@ -1,9 +1,17 @@
 import React from 'react';
 
-class SearchBar extends React.Component {
-  state = {
-    searchValue: '',
-  };
+interface SearchBarState {
+  searchValue: string | number | null;
+  [x: string]: string | number | null;
+}
+
+class SearchBar extends React.Component<object, SearchBarState> {
+  constructor(props: object) {
+    super(props);
+    this.state = {
+      searchValue: '',
+    };
+  }
 
   componentDidMount() {
     const searchValue = localStorage.getItem('searchValue');
@@ -16,7 +24,9 @@ class SearchBar extends React.Component {
     this.setState({ [input.name]: value });
 
     const { searchValue } = this.state;
-    localStorage.setItem('searchValue', searchValue);
+    if (searchValue !== null) {
+      localStorage.setItem('searchValue', searchValue.toString());
+    }
   };
 
   render() {
@@ -27,7 +37,7 @@ class SearchBar extends React.Component {
             className="search_input"
             type="search"
             name="searchValue"
-            value={this.state.searchValue}
+            value={this.state.searchValue as string}
             onChange={this.handleChange}
           />
         </form>
