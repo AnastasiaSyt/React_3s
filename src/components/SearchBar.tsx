@@ -1,49 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-interface SearchBarState {
-  searchValue: string | number | null;
-  [x: string]: string | number | null;
-}
+function SearchBar() {
+  const [searchValue, setSearchValue] = useState(localStorage.getItem('searchValue'));
 
-class SearchBar extends React.Component<object, SearchBarState> {
-  constructor(props: object) {
-    super(props);
-    this.state = {
-      searchValue: '',
-    };
-  }
+  useEffect(() => {
+    localStorage.setItem('searchValue', String(searchValue));
+  }, [searchValue]);
 
-  componentDidMount() {
-    const searchValue = localStorage.getItem('searchValue');
-    this.setState({ searchValue });
-  }
-
-  handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const input = event.target;
-    const value = input.value;
-    this.setState({ [input.name]: value });
-
-    const { searchValue } = this.state;
-    if (searchValue !== null) {
-      localStorage.setItem('searchValue', searchValue.toString());
-    }
-  };
-
-  render() {
-    return (
-      <div className="search">
-        <form className="search_bar">
+  return (
+    <div className="search">
+      <form className="search_bar">
+        {searchValue != null && (
           <input
             className="search_input"
             type="search"
             name="searchValue"
-            value={this.state.searchValue as string}
-            onChange={this.handleChange}
+            placeholder="What do you want to find?"
+            onChange={(event) => {
+              setSearchValue(event.target.value);
+            }}
+            value={searchValue}
           />
-        </form>
-      </div>
-    );
-  }
+        )}
+      </form>
+    </div>
+  );
 }
 
 export default SearchBar;
