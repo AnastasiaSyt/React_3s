@@ -39,6 +39,15 @@
     color: white;
 }
 
+.form_select{
+  /* background: #181A2A;
+  border: 1px solid #3B3C4A; */
+  border-radius: 6px;
+  padding: 10px;
+
+  /* color: white; */
+}
+
 [type=checkbox] {
     width: 20px;
     height: 20px;
@@ -148,6 +157,7 @@
 .error{
   color: red;
   margin-bottom: 10px;
+  margin-left: 10px;
 }
 
 .valid{
