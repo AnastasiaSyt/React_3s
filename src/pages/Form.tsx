@@ -48,7 +48,7 @@ export default function Form() {
                   {...register('title', {
                     required: 'Title is require field',
                     pattern: {
-                      value: /^[а-яА-ЯёЁa-zA-Z0-9]+$/,
+                      value: /^[а-яА-ЯёЁa-zA-Z0-9\s]+$/,
                       message: 'Title must contain only letters and numbers',
                     },
                   })}
