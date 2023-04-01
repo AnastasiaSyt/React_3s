@@ -1,8 +1,8 @@
 import React from 'react';
 
 interface CardProps {
-  person: string;
-  date: string;
+  person?: string;
+  date?: string;
 }
 
 const CardInfo: React.FC<CardProps> = ({ person, date }) => {

@@ -14,7 +14,7 @@ export default function CardItem(props: CardItemProps) {
     <div className="card">
       <CardImage imageCard={props.imageCard} item={props.item} />
       <div className="card_title">{props.item.title}</div>
-      <CardInfo item={props.item} />
+      <CardInfo person={props.item.person} date={props.item.date} />
     </div>
   );
 }
