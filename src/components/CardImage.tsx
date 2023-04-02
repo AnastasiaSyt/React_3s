@@ -7,7 +7,6 @@ interface CardProps {
 }
 
 const CardImage: React.FC<CardProps> = ({ imageCard, item }) => {
-  console.log(imageCard);
   return (
     <div className="card_img">
       {imageCard === null || (item?.image != null && <img className="card_img" src={item.image} />)}

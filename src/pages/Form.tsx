@@ -20,7 +20,7 @@ export default function Form() {
     register,
     control,
     handleSubmit,
-    formState: { errors },
+    formState: { isSubmitSuccessful, errors },
     reset,
   } = useForm<IInputsForm>({ mode: 'onChange' });
 
@@ -30,6 +30,12 @@ export default function Form() {
     console.log(data.image[0], data.checkboxValue);
     // reset();
   };
+
+  React.useEffect(() => {
+    if (isSubmitSuccessful) {
+      reset();
+    }
+  }, [reset, isSubmitSuccessful]);
 
   return (
     <div className="App">

@@ -10,7 +10,6 @@ interface CardProps {
 }
 
 const CardForm: React.FC<CardProps> = ({ title, person, date, imageCard }) => {
-  console.log(imageCard);
   return (
     <div className="card">
       <CardImage imageCard={imageCard} />
