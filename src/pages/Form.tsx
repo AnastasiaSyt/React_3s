@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/Form.css';
 import '../styles/Card.css';
 import { useForm, Controller } from 'react-hook-form';
@@ -16,12 +16,21 @@ interface IInputsForm {
 
 export default function Form() {
   const [formDataList, setFormDataList] = useState<IInputsForm[]>([]);
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  useEffect(() => {
+    if (isSuccess) {
+      setTimeout(() => {
+        setIsSuccess(false);
+      }, 2000);
+    }
+  }, [isSuccess]);
 
   const {
     register,
     control,
     handleSubmit,
-    formState: { isSubmitSuccessful, errors },
+    formState: { errors },
     reset,
   } = useForm<IInputsForm>({ mode: 'onChange' });
 
@@ -29,7 +38,12 @@ export default function Form() {
     setFormDataList([...formDataList, data]);
     console.log(formDataList);
     console.log(data.image[0], data.checkboxValue);
+    setIsSuccess(true);
     // reset();
+  };
+
+  const handleChange = () => {
+    setIsSuccess(false);
   };
 
   // React.useEffect(() => {
@@ -45,7 +59,7 @@ export default function Form() {
         This is form to create new post
         <div className="form">
           <div>
-            <form onSubmit={handleSubmit(onSubmit)} className="form_post">
+            <form onSubmit={handleSubmit(onSubmit)} onChange={handleChange} className="form_post">
               <div>
                 <label htmlFor="title" className="form_label">
                   Title for post:
@@ -205,6 +219,7 @@ export default function Form() {
               </button>
             </form>
 
+            {isSuccess && <div className="valid">A new card has been created</div>}
             {formDataList !== null && (
               <div className="cards">
                 {formDataList.map((formData, index) => (
