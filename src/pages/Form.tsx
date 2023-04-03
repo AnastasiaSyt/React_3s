@@ -31,11 +31,11 @@ export default function Form() {
     // reset();
   };
 
-  React.useEffect(() => {
-    if (isSubmitSuccessful) {
-      reset();
-    }
-  }, [reset, isSubmitSuccessful]);
+  // React.useEffect(() => {
+  //   if (isSubmitSuccessful) {
+  //     reset();
+  //   }
+  // }, [reset, isSubmitSuccessful]);
 
   return (
     <div className="App">
