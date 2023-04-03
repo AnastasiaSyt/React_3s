@@ -131,36 +131,51 @@ export default function Form() {
 
               <div className="all_radio">
                 <label className="form_label">Choose your avatar:</label>
-                <input
-                  type="radio"
-                  value="../public/tracy.png"
-                  {...register('personImg', { required: true })}
-                />{' '}
-                <img src="../public/tracy.png" />
-                <input
-                  type="radio"
-                  value="../public/jason.png"
-                  {...register('personImg', { required: true })}
-                />{' '}
-                <img src="../public/jason.png" />
-                <input
-                  type="radio"
-                  {...register('personImg', { required: true })}
-                  value="../public/lizzy.png"
-                />{' '}
-                <img src="../public/lizzy.png" />
-                <input
-                  type="radio"
-                  {...register('personImg', { required: true })}
-                  value="../public/ernie.png"
-                />{' '}
-                <img src="../public/ernie.png" />
-                <input
-                  type="radio"
-                  {...register('personImg', { required: true })}
-                  value="../public/eric.png"
-                />{' '}
-                <img src="../public/eric.png" />
+                <div className="radio_container">
+                  <input
+                    className="radio"
+                    type="radio"
+                    value="../public/tracy.png"
+                    {...register('personImg', { required: true })}
+                  />{' '}
+                  <img className="radio-tile" src="../public/tracy.png" />
+                </div>
+                <div className="radio_container">
+                  <input
+                    type="radio"
+                    className="radio"
+                    value="../public/jason.png"
+                    {...register('personImg', { required: true })}
+                  />{' '}
+                  <img className="radio-tile" src="../public/jason.png" />
+                </div>
+                <div className="radio_container">
+                  <input
+                    type="radio"
+                    className="radio"
+                    {...register('personImg', { required: true })}
+                    value="../public/lizzy.png"
+                  />{' '}
+                  <img className="radio-tile" src="../public/lizzy.png" />
+                </div>
+                <div className="radio_container">
+                  <input
+                    type="radio"
+                    className="radio"
+                    {...register('personImg', { required: true })}
+                    value="../public/ernie.png"
+                  />{' '}
+                  <img className="radio-tile" src="../public/ernie.png" />
+                </div>
+                <div className="radio_container">
+                  <input
+                    type="radio"
+                    className="radio"
+                    {...register('personImg', { required: true })}
+                    value="../public/eric.png"
+                  />{' '}
+                  <img className="radio-tile" src="../public/eric.png" />
+                </div>
                 {errors.personImg != null && <span className="error">Choose avatar</span>}
               </div>
 
