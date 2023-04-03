@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for Footer.tsx</title>
+    <title>Code coverage report for CardItem.tsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> Footer.tsx</h1>
+        <h1><a href="index.html">All files</a> CardItem.tsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -80,14 +80,22 @@
 <a name='L15'></a><a href='#L15'>15</a>
 <a name='L16'></a><a href='#L16'>16</a>
 <a name='L17'></a><a href='#L17'>17</a>
-<a name='L18'></a><a href='#L18'>18</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -98,19 +106,23 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
+import { type TCardItem } from '../types/card_type';
+import CardImage from './CardImage';
+import CardInfo from './CardInfo';
 &nbsp;
-export default function Footer() {
+interface CardItemProps {
+  item: TCardItem;
+  imageCard?: Blob | MediaSource;
+}
+&nbsp;
+export default function CardItem(props: CardItemProps) {
   return (
-    &lt;div className="footer"&gt;
-      &lt;div className="footer_wrapper wrapper"&gt;
-        &lt;p className="year"&gt;©2023&lt;/p&gt;
-        &lt;a className="footer_link" href="https://github.com/AnastasiaSyt"&gt;
-          AnastasiaSyt
-        &lt;/a&gt;
-        &lt;a className="logo_rsschool" href="https://rs.school"&gt;
-          &lt;img src="../../public/rs_school.png" alt="logo rs school" /&gt;
-        &lt;/a&gt;
+    &lt;div className="card"&gt;
+      &lt;CardImage imageCard={props.imageCard} item={props.item} /&gt;
+      &lt;div className="card_title" role="title"&gt;
+        {props.item.title}
       &lt;/div&gt;
+      &lt;CardInfo person={props.item.person} date={props.item.date} /&gt;
     &lt;/div&gt;
   );
 }

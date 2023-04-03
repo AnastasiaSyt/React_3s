@@ -8,11 +8,13 @@ interface CardProps {
 const CardInfo: React.FC<CardProps> = ({ person, date }) => {
   return (
     <div className="card_info">
-      <div className="author">
-        <img className="author_img" src="../../public/tracy.png"></img>
+      <div className="author" role="author">
+        <img className="author_img" src="../../public/tracy.png" role="avatar"></img>
         {person}
       </div>
-      <div className="date">{date}</div>
+      <div className="date" role="date">
+        {date}
+      </div>
     </div>
   );
 };
