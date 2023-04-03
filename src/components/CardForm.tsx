@@ -6,15 +6,16 @@ interface CardProps {
   imageCard: Blob | MediaSource | undefined;
   title: string;
   person: string;
+  personImg: string;
   date: string;
 }
 
-const CardForm: React.FC<CardProps> = ({ title, person, date, imageCard }) => {
+const CardForm: React.FC<CardProps> = ({ title, person, date, imageCard, personImg }) => {
   return (
     <div className="card">
       <CardImage imageCard={imageCard} />
       <div className="card_title">{title}</div>
-      <CardInfo person={person} date={date} />
+      <CardInfo person={person} personImg={personImg} date={date} />
     </div>
   );
 };

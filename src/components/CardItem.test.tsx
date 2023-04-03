@@ -7,7 +7,7 @@ const testItem = {
   id: 1,
   image: '../public/1.jpg',
   title: 'Nature is a teacher – Just sit quietly under a tree',
-  person_img: '../public/tracy.png',
+  personImg: '../public/tracy.png',
   person: 'Tracey Wilson',
   date: 'February 20, 2023',
 };
@@ -49,7 +49,7 @@ describe('Testing components CardItems', () => {
   test("the card has a person's avatar", () => {
     const avatar = screen.getByRole('avatar');
     expect(avatar).toBeInTheDocument();
-    // expect(avatar).toHaveAttribute('src', testItem.person_img);
+    // expect(avatar).toHaveAttribute('src', testItem.personImg);
     expect(avatar).toHaveClass('author_img');
   });
 });

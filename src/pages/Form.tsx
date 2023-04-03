@@ -9,6 +9,7 @@ interface IInputsForm {
   image: FileList;
   title: string;
   person: string;
+  personImg: string;
   date: string;
   checkboxValue: boolean;
 }
@@ -104,6 +105,7 @@ export default function Form() {
                   </select>
                 )}
               />
+              {errors.person != null && <span className="error">Choose author</span>}
 
               <div>
                 <label htmlFor="checkboxValue" className="form_label">
@@ -125,6 +127,41 @@ export default function Form() {
                 {errors.checkboxValue != null && (
                   <span className="error">This field is required</span>
                 )}
+              </div>
+
+              <div className="all_radio">
+                <label className="form_label">Choose your avatar:</label>
+                <input
+                  type="radio"
+                  value="../public/tracy.png"
+                  {...register('personImg', { required: true })}
+                />{' '}
+                <img src="../public/tracy.png" />
+                <input
+                  type="radio"
+                  value="../public/jason.png"
+                  {...register('personImg', { required: true })}
+                />{' '}
+                <img src="../public/jason.png" />
+                <input
+                  type="radio"
+                  {...register('personImg', { required: true })}
+                  value="../public/lizzy.png"
+                />{' '}
+                <img src="../public/lizzy.png" />
+                <input
+                  type="radio"
+                  {...register('personImg', { required: true })}
+                  value="../public/ernie.png"
+                />{' '}
+                <img src="../public/ernie.png" />
+                <input
+                  type="radio"
+                  {...register('personImg', { required: true })}
+                  value="../public/eric.png"
+                />{' '}
+                <img src="../public/eric.png" />
+                {errors.personImg != null && <span className="error">Choose avatar</span>}
               </div>
 
               <div>

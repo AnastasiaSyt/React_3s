@@ -2,7 +2,7 @@ export interface TCardItem {
   id?: number;
   image?: string;
   title?: string;
-  person_img?: string;
+  personImg?: string;
   person?: string;
   date?: string;
 }

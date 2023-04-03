@@ -15,7 +15,11 @@ export default function CardItem(props: CardItemProps) {
       <div className="card_title" role="title">
         {props.item.title}
       </div>
-      <CardInfo person={props.item.person} date={props.item.date} />
+      <CardInfo
+        person={props.item.person}
+        date={props.item.date}
+        personImg={props.item.personImg}
+      />
     </div>
   );
 }

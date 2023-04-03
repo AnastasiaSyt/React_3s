@@ -17,7 +17,7 @@ export interface TNewPost {
   id: number;
   imageCard: File;
   title: string;
-  person_img: string;
+  personImg: string;
   person: string;
   date: string;
 }
