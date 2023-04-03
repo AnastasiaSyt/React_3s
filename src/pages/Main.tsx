@@ -1,6 +1,7 @@
 import Cards from '../components/Cards';
 import React from 'react';
 import SearchBar from '../components/SearchBar';
+import '../styles/Card.css';
 
 export default function Main() {
   return (

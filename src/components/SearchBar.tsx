@@ -8,10 +8,11 @@ function SearchBar() {
   }, [searchValue]);
 
   return (
-    <div className="search">
+    <div className="search" role="search">
       <form className="search_bar">
         {searchValue != null && (
           <input
+            role="search-input"
             className="search_input"
             type="search"
             name="searchValue"
