@@ -28,8 +28,6 @@ describe('Testing components CardItems', () => {
   test('the card has a picture', () => {
     const picture = screen.getByRole('picture');
     expect(picture).toBeInTheDocument();
-    // expect(picture).toHaveAttribute('src', testItem.image);
-    // expect(picture).toHaveAttribute('alt', 'post image');
     expect(picture).toHaveClass('card_img');
   });
 
@@ -49,7 +47,6 @@ describe('Testing components CardItems', () => {
   test("the card has a person's avatar", () => {
     const avatar = screen.getByRole('avatar');
     expect(avatar).toBeInTheDocument();
-    // expect(avatar).toHaveAttribute('src', testItem.personImg);
     expect(avatar).toHaveClass('author_img');
   });
 });
