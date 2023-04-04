@@ -18,6 +18,14 @@ export default function Form() {
   const [formDataList, setFormDataList] = useState<IInputsForm[]>([]);
   const [isSuccess, setIsSuccess] = useState(false);
 
+  const {
+    register,
+    reset,
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IInputsForm>({ mode: 'onChange' });
+
   useEffect(() => {
     if (isSuccess) {
       setTimeout(() => {
@@ -26,31 +34,15 @@ export default function Form() {
     }
   }, [isSuccess]);
 
-  const {
-    register,
-    control,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm<IInputsForm>({ mode: 'onChange' });
-
   const onSubmit = (data: IInputsForm) => {
     setFormDataList([...formDataList, data]);
-    console.log(formDataList);
-    console.log(data.image[0], data.checkboxValue);
     setIsSuccess(true);
-    // reset();
+    reset();
   };
 
   const handleChange = () => {
     setIsSuccess(false);
   };
-
-  // React.useEffect(() => {
-  //   if (isSubmitSuccessful) {
-  //     reset();
-  //   }
-  // }, [reset, isSubmitSuccessful]);
 
   return (
     <div className="App">
