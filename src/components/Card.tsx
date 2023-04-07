@@ -1,0 +1,37 @@
+import React, { type FC, useState } from 'react';
+import { type IImages } from '../types/IImages';
+import CardImage from './CardImage';
+import CardInfo from './CardInfo';
+import Modal from './Modal';
+
+interface CardProps {
+  cardData: IImages;
+  key: number;
+}
+
+const Card: FC<CardProps> = ({ cardData, key }: CardProps) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleCardClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  return (
+    <>
+      <div className="card" onClick={handleCardClick} key={key}>
+        <CardImage item={cardData.urls} />
+        <div className="card_title" role="title">
+          {cardData.description}
+        </div>
+        <CardInfo user={cardData.user} date={cardData.created_at} />
+      </div>
+      <Modal isOpen={isModalOpen} onClose={handleCloseModal} cardData={cardData} />
+    </>
+  );
+};
+
+export default Card;

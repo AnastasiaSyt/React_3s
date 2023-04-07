@@ -1,23 +1,13 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import React, { type FC } from 'react';
 import { type IImages } from '../types/IImages';
-import CardInfo from './CardInfo';
-import CardImage from './CardImage';
+import Card from './Card';
 
 const Cards: FC<{ cards: IImages[] }> = ({ cards }) => {
   return (
     <div className="wrapper">
       <div className="cards" role="cards">
-        {cards.map(({ description, created_at, id, urls, user }) => {
-          return (
-            <div className="card" key={id}>
-              <CardImage item={urls} />
-              <div className="card_title" role="title">
-                {description}
-              </div>
-              <CardInfo user={user} date={created_at} />
-            </div>
-          );
+        {cards.map((cardData: IImages, index: number) => {
+          return <Card cardData={cardData} key={index} />;
         })}
       </div>
     </div>

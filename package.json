@@ -22,6 +22,7 @@
     "husky": "^8.0.3",
     "jest-config": "^29.5.0",
     "lint-staged": "^13.2.0",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.43.8",

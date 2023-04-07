@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { type ChangeEvent, useEffect, useState } from 'react';
+import axiosInstance from '../services/api';
+import { type IImages } from '../types/IImages';
+import Cards from './Cards';
 
 function SearchBar() {
   return (
@@ -8,6 +11,11 @@ function SearchBar() {
       type="search"
       name="searchValue"
       placeholder="What do you want to find?"
+      onChange={(event) => {
+        setSearchValue(event.target.value);
+      }}
+      defaultValue={searchValue}
+      value={searchValue}
     />
   );
 }

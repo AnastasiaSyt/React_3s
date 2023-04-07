@@ -1,23 +1,17 @@
 import '../styles/Card.css';
-import React, { type ChangeEvent, useEffect, useState } from 'react';
+import React, { type ChangeEvent, useState } from 'react';
 import axiosInstance from '../services/api';
 import { type IImages } from '../types/IImages';
 import Cards from '../components/Cards';
 
 function Main() {
   const [searchValue, setSearchValue] = useState<string>(localStorage.getItem('searchValue') ?? '');
-  const [isLoad, setLoad] = useState<boolean>(false);
+  // const [isLoad, setLoad] = useState<boolean>(false);
   const [cards, setCards] = useState<IImages[]>([]);
-
-  useEffect(() => {
-    return () => {
-      localStorage.setItem('searchValue', String(searchValue));
-    };
-  }, [searchValue]);
 
   const handleSubmit = async (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoad(true);
+    // setLoad(true);
     try {
       const response = await axiosInstance.get(
         `search/photos?page=1&query=${searchValue}&client_id=oUzXmCaN7FyevXb3pn-y_bUTpR1uBXUgPthsuwjdZjA`
@@ -26,7 +20,7 @@ function Main() {
     } catch (error) {
       console.error(error);
     } finally {
-      setLoad(false);
+      // setLoad(false);
       console.log('test');
     }
   };
