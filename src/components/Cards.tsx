@@ -1,23 +1,27 @@
-import { CardData } from '../cards_data';
-import React, { useState } from 'react';
-import CardItem from './CardItem';
-import { type TCardItem } from 'types/card_type';
+/* eslint-disable @typescript-eslint/naming-convention */
+import React, { type FC } from 'react';
+import { type IImages } from '../types/IImages';
+import CardInfo from './CardInfo';
+import CardImage from './CardImage';
 
-function Cards() {
-  const [cards] = useState(CardData);
-
+const Cards: FC<{ cards: IImages[] }> = ({ cards }) => {
   return (
     <div className="wrapper">
-      <>
-        <h1 className="main_title">Latest Post</h1>
-        <div className="cards" role="cards">
-          {cards.map((item: TCardItem) => (
-            <CardItem item={item} key={item.id} />
-          ))}
-        </div>
-      </>
+      <div className="cards" role="cards">
+        {cards.map(({ description, created_at, id, urls, user }) => {
+          return (
+            <div className="card" key={id}>
+              <CardImage item={urls} />
+              <div className="card_title" role="title">
+                {description}
+              </div>
+              <CardInfo user={user} date={created_at} />
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
-}
+};
 
 export default Cards;
