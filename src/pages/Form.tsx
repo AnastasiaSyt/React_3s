@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import '../styles/Form.css';
 import '../styles/Card.css';
 import { useForm, Controller } from 'react-hook-form';
@@ -26,18 +26,13 @@ export default function Form() {
     formState: { errors },
   } = useForm<IInputsForm>({ mode: 'onChange' });
 
-  useEffect(() => {
-    if (isSuccess) {
-      setTimeout(() => {
-        setIsSuccess(false);
-      }, 2000);
-    }
-  }, [isSuccess]);
-
   const onSubmit = (data: IInputsForm) => {
-    setFormDataList([...formDataList, data]);
+    const fileCopy = Object.assign({}, data);
+    fileCopy.image = { ...data.image };
     setIsSuccess(true);
+    setFormDataList([...formDataList, fileCopy]);
     reset();
+    console.log(fileCopy);
   };
 
   const handleChange = () => {

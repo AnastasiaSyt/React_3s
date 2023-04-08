@@ -70,14 +70,18 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, cardData }) => {
                   </p>
                 </div>
                 <div className="modal_bottom">
-                  <div className="modal_instagram">
-                    <img src="../public/mdi_instagram.svg" className="modal_icon"></img>
-                    <p>{cardData.user.social.instagram_username}</p>
-                  </div>
-                  <div className="modal_twitter">
-                    <img src="../public/iconoir_twitter.svg" className="modal_icon"></img>
-                    <p>{cardData.user.social.twitter_username}</p>
-                  </div>
+                  {cardData.user.social.instagram_username !== null && (
+                    <div className="modal_instagram">
+                      <img src="../public/mdi_instagram.svg" className="modal_icon"></img>
+                      <p>{cardData.user.social.instagram_username}</p>
+                    </div>
+                  )}
+                  {cardData.user.social.twitter_username !== null && (
+                    <div className="modal_twitter">
+                      <img src="../public/iconoir_twitter.svg" className="modal_icon"></img>
+                      <p>{cardData.user.social.twitter_username}</p>
+                    </div>
+                  )}
                   <div className="modal_license">
                     <img src="../public/carbon_security.svg" className="modal_icon"></img>
                     <p>Free to use under the Unsplash License</p>
