@@ -205,3 +205,21 @@
     flex-direction: column;
     justify-content: space-between;
 }
+
+
+@media (max-width: 1600px) {
+    .modal_window {
+        width: 800px;
+        height: 625px;
+        background: linear-gradient(180deg, rgba(62, 84, 187, 0.2) 0%, rgba(31, 37, 71, 0.2) 100%), #181A2A;
+        border-radius: 12px;
+        padding: 50px;
+        position: relative;
+    }
+    
+    .modal_image {
+        width: 400px;
+        height: 525px;
+        border-radius: 6px;
+    }
+  }
