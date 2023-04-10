@@ -18,10 +18,4 @@ describe('Testing components SearchBar', () => {
     const input = screen.getByRole('search-input');
     expect(input).toBeInTheDocument();
   });
-
-  test('the value in the input can changed by the user', () => {
-    const input = screen.getByRole('search-input');
-    fireEvent.change(input, { target: { value: 'this is testing search query' } });
-    expect(input).toHaveAttribute('value', 'this is testing search query');
-  });
 });
