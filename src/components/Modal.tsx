@@ -29,10 +29,10 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, cardData }) => {
               <div className="modal_info">
                 <div className="modal_top">
                   {cardData.description !== null && (
-                    <p className="modal_title">{cardData.description}</p>
+                    <div className="modal_title">{cardData.description}</div>
                   )}
                   {cardData.description === null && (
-                    <p className="modal_title">{cardData.alt_description}</p>
+                    <div className="modal_title">{cardData.alt_description}</div>
                   )}
                   <div className="modal_author_info">
                     <div className="modal_author">
@@ -43,9 +43,9 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, cardData }) => {
                       />
                       <div className="modal_author_name">{cardData.user.name}</div>
                     </div>
-                    <p className="modal_date">
+                    <div className="modal_date">
                       {new Date(cardData.updated_at).toLocaleDateString()}
-                    </p>
+                    </div>
                   </div>
                   <div className="modal_tags">
                     {cardData.tags.map((item: ITag, index: number) => {
@@ -63,23 +63,23 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, cardData }) => {
                   <button className="modal_download button">Download photo</button>
                 </a>
                 <div className="modal_middle">
-                  <p className="modal_likes">Likes: {cardData.likes}</p>
-                  <p className="modal_colors">
+                  <div className="modal_likes">Likes: {cardData.likes}</div>
+                  <div className="modal_colors">
                     Color:
                     <div className="modal_circle" style={{ backgroundColor: cardData.color }}></div>
-                  </p>
+                  </div>
                 </div>
                 <div className="modal_bottom">
                   {cardData.user.social.instagram_username !== null && (
                     <div className="modal_instagram">
                       <img src="../public/mdi_instagram.svg" className="modal_icon"></img>
-                      <p>{cardData.user.social.instagram_username}</p>
+                      <div>{cardData.user.social.instagram_username}</div>
                     </div>
                   )}
                   {cardData.user.social.twitter_username !== null && (
                     <div className="modal_twitter">
                       <img src="../public/iconoir_twitter.svg" className="modal_icon"></img>
-                      <p>{cardData.user.social.twitter_username}</p>
+                      <div>{cardData.user.social.twitter_username}</div>
                     </div>
                   )}
                   <div className="modal_license">

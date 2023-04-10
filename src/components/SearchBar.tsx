@@ -1,7 +1,4 @@
-import React, { type ChangeEvent, useEffect, useState } from 'react';
-import axiosInstance from '../services/api';
-import { type IImages } from '../types/IImages';
-import Cards from './Cards';
+import React from 'react';
 
 function SearchBar() {
   return (

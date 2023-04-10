@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import '../styles/Card.css';
 import React, { type ChangeEvent, useState } from 'react';
 import axiosInstance from '../services/api';
@@ -15,24 +16,29 @@ function Main() {
     setLoad(true);
     try {
       const response = await axiosInstance.get(
-        `search/photos?page=1&query=${searchValue}&client_id=oUzXmCaN7FyevXb3pn-y_bUTpR1uBXUgPthsuwjdZjA`
+        `search/photos?page=1&limit=9&query=${searchValue}&client_id=oUzXmCaN7FyevXb3pn-y_bUTpR1uBXUgPthsuwjdZjA`
       );
       setCards(response.data.results);
     } catch (error) {
       console.error(error);
     } finally {
       setLoad(false);
-      console.log('test');
     }
   };
 
   return (
-    <>
+    <div className="App">
       {isLoad && <Preloader />}
       {!isLoad && (
         <div className="wrapper main_wrapper">
           <div className="search" role="search">
             <form className="search_bar" onSubmit={handleSubmit}>
+              {/* <SearchBar
+                searchValue={'searchValue'}
+                onChange={(event) => {
+                  setSearchValue(event.target.value);
+                }}
+              /> */}
               <input
                 role="search-input"
                 className="search_input"
@@ -42,15 +48,15 @@ function Main() {
                 onChange={(event) => {
                   setSearchValue(event.target.value);
                 }}
-                defaultValue={searchValue}
                 value={searchValue}
               />
             </form>
-            <Cards cards={cards} />
+            {cards.length > 0 && <Cards cards={cards} />}
+            {cards.length === 0 && <p className="not_found">Nothing found for your request</p>}
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
 

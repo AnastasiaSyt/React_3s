@@ -1,5 +1,4 @@
 import React from 'react';
-import { type TCardItem } from '../types/card_type';
 import CardImage from './CardImage';
 import CardInfo from './CardInfo';
 import { type IImages } from '../types/IImages';
@@ -12,7 +11,7 @@ interface CardItemProps {
 export default function CardItem(item: CardItemProps) {
   return (
     <div className="card">
-      <CardImage imageCard={props.imageCard} item={props.item} />
+      <CardImage imageCard={item.imageCard} item={props.item} />
       <div className="card_title" role="title">
         {item.description}
       </div>

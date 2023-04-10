@@ -6,9 +6,9 @@ interface TagProps {
   key: number;
 }
 
-const Tag: FC<TagProps> = ({ tag, key }: TagProps) => {
+const Tag: FC<TagProps> = ({ tag }: TagProps) => {
   return (
-    <div className="tag_background" key={key}>
+    <div className="tag_background">
       <p className="tag">{tag.title}</p>
     </div>
   );

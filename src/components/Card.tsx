@@ -9,7 +9,7 @@ interface CardProps {
   key: number;
 }
 
-const Card: FC<CardProps> = ({ cardData, key }: CardProps) => {
+const Card: FC<CardProps> = ({ cardData }: CardProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleCardClick = () => {
@@ -22,7 +22,7 @@ const Card: FC<CardProps> = ({ cardData, key }: CardProps) => {
 
   return (
     <>
-      <div className="card" onClick={handleCardClick} key={key}>
+      <div className="card" onClick={handleCardClick}>
         <CardImage item={cardData.urls} />
         <div className="card_title" role="title">
           {cardData.description}
