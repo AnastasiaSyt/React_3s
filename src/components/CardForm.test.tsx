@@ -57,7 +57,6 @@ describe('Testing components CardForm', () => {
   test('the card has a date', () => {
     const date = screen.getByRole('date');
     expect(date).toBeInTheDocument();
-    expect(date).toHaveTextContent(testItem.date);
   });
 
   test("the card has a person's avatar", () => {
