@@ -16,7 +16,7 @@ const CardInfo: React.FC<CardProps> = ({ person, date, personImg, user }) => {
         {user?.name}
       </div>
       <div className="date" role="date">
-        {date}
+        {new Date(date!).toLocaleDateString()}
       </div>
     </div>
   );

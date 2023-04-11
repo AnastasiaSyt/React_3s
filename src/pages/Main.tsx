@@ -16,7 +16,7 @@ const Main = () => {
 
   useEffect(() => {
     localStorage.setItem('searchhvalue', searchValue);
-    if (localStorage.getItem('searchhvalue') != null)
+    if (localStorage.getItem('searchhvalue') !== null)
       setSearchValue(JSON.parse(JSON.stringify(localStorage.getItem('searchhvalue'))));
   }, [searchValue]);
 
@@ -39,6 +39,10 @@ const Main = () => {
 
   const handleSearch = (e: { preventDefault: () => void }) => {
     e.preventDefault();
+    updateCards();
+  };
+
+  const updateCards = () => {
     setLoading(true);
     const searchValue = JSON.parse(JSON.stringify(localStorage.getItem('searchhvalue')));
     fetch(
@@ -68,20 +72,20 @@ const Main = () => {
   } else if (!loading && !showDefaultCards) {
     return (
       <div className="App">
-        <div className="wrapper">
+        <div className="wrapper search_main">
           <SearchBar
             value={searchValue}
             onChange={handlesearchValueChange}
             onSubmit={handleSearch}
           />
+          <Cards cards={searchCards} />
         </div>
-        <Cards cards={searchCards} />
       </div>
     );
   } else if (!loading && showDefaultCards) {
     return (
       <div className="App">
-        <div className="wrapper">
+        <div className="wrapper search_main">
           <SearchBar
             value={searchValue}
             onChange={handlesearchValueChange}

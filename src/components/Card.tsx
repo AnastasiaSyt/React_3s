@@ -24,9 +24,16 @@ const Card: FC<CardProps> = ({ cardData }: CardProps) => {
     <>
       <div className="card" onClick={handleCardClick}>
         <CardImage item={cardData.urls} />
-        <div className="card_title" role="title">
-          {cardData.description}
-        </div>
+        {cardData.description !== null && (
+          <div className="card_title" role="title">
+            {cardData.description}
+          </div>
+        )}
+        {cardData.description === null && (
+          <div className="card_title" role="title">
+            {cardData.alt_description}
+          </div>
+        )}
         <CardInfo user={cardData.user} date={cardData.created_at} />
       </div>
       <Modal isOpen={isModalOpen} onClose={handleCloseModal} cardData={cardData} />
