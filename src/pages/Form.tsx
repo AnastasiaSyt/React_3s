@@ -4,6 +4,7 @@ import '../styles/Form.css';
 import '../styles/Card.css';
 import { useForm, Controller } from 'react-hook-form';
 import CardForm from '../components/CardForm';
+import CardsList from '../components/form/CardsList';
 
 interface IInputsForm {
   image: FileList;
@@ -206,14 +207,15 @@ export default function Form() {
               </button>
             </form>
 
-            {isSuccess && <div className="valid">A new card has been created</div>}
+            {/* {isSuccess && <div className="valid">A new card has been created</div>}
             {formDataList !== null && (
               <div className="cards">
                 {formDataList.map((formData, index) => (
                   <CardForm imageCard={formData.image[0]} {...formData} key={index} />
                 ))}
               </div>
-            )}
+            )} */}
+            <CardsList />
           </div>
         </div>
       </div>
