@@ -1,0 +1,4 @@
+export const SEARCH_VALUE_ADD = 'SEARCH_VALUE_ADD';
+export const REQUEST_CARD = 'REQUEST_CARD';
+export const RECEIVE_CARD = 'RECEIVE_CARD';
+export const FAIL_GETTING_CARD = 'FAIL_GETTING_CARD';
