@@ -1,0 +1,25 @@
+import React from 'react';
+import { useGetImagesQuery } from '../services/api';
+import { useSelector } from 'react-redux';
+import { type RootState } from '../redux/store';
+import Preloader from './Preloader';
+import { type IImages } from 'types/IImages';
+import Card from './Card';
+
+const ImagesCardList = () => {
+  const { search } = useSelector((state: RootState) => state.images);
+  const { data, isFetching } = useGetImagesQuery(search.length !== 0 ? search : undefined);
+  console.log(data);
+  return (
+    <div className="wrapper">
+      {isFetching && <Preloader />}
+      {!isFetching &&
+        data !== null &&
+        data?.results.map((cardData: IImages, index: number) => (
+          <Card cardData={cardData} key={index} />
+        ))}
+    </div>
+  );
+};
+
+export default ImagesCardList;

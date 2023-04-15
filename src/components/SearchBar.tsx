@@ -1,26 +1,40 @@
-import React, { type ChangeEvent } from 'react';
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { type AppDispatch, type RootState } from '../redux/store';
+import { setSearch } from '../redux/ImageSlice';
 
-interface SearchInputProps {
-  value: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  onSubmit: (e: { preventDefault: () => void }) => void;
-}
+const SearchBar = () => {
+  const { search } = useSelector((state: RootState) => state.images);
+  const [value, setValue] = useState<string>(search);
+  const dispatch = useDispatch<AppDispatch>();
 
-const SearchBar: React.FC<SearchInputProps> = ({ value, onChange, onSubmit }) => {
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      dispatch(setSearch(value));
+    }
+  };
+
+  const handleInput = (event: React.FormEvent<HTMLInputElement>) => {
+    setValue(event.currentTarget.value);
+  };
+
   return (
-    <form className="search_bar" role="search" onSubmit={onSubmit}>
-      <div>
-        <input
-          value={value}
-          type="search"
-          onChange={onChange}
-          role="search-input"
-          className="search_input"
-          name="searchValue"
-          placeholder="What do you want to find?"
-        />
-      </div>
-    </form>
+    <div className="search_bar" role="search">
+      <input
+        value={value}
+        type="text"
+        onInput={(event) => {
+          handleInput(event);
+        }}
+        onKeyDown={(event) => {
+          handleKeyDown(event);
+        }}
+        role="search-input"
+        className="search_input"
+        name="searchValue"
+        placeholder="What do you want to find?"
+      />
+    </div>
   );
 };
 
