@@ -1,11 +1,12 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import React from 'react';
 import '../styles/Form.css';
 import '../styles/Card.css';
 import { useForm, Controller } from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux';
-import { addFormData, resetFormData } from '../components/form/formActions';
-import CardsList from '../components/form/CardsList';
-import { type RootState } from '../components/form/store';
+import { useDispatch } from 'react-redux';
+import CardsList from '../components/CardsList';
+import { type AppDispatch } from '../redux/store';
+import { addCard } from '../redux/formSlice';
 
 export interface IInputsForm {
   image: string;
@@ -17,8 +18,7 @@ export interface IInputsForm {
 }
 
 export default function Form() {
-  const dispatch = useDispatch();
-  const formDataList = useSelector((state: RootState) => state.formDataList);
+  const dispatch = useDispatch<AppDispatch>();
   const [isSuccess, setIsSuccess] = React.useState(false);
 
   const {
@@ -30,16 +30,23 @@ export default function Form() {
   } = useForm<IInputsForm>({ mode: 'onChange' });
 
   const onSubmit = (data: IInputsForm) => {
+    const { title, person, personImg, date, checkboxValue } = data;
     const fileCopy = Object.assign({}, data);
     const fileImage = data.image?.[0];
     const blob = new Blob([fileImage], { type: 'application/pdf' });
     fileCopy.image = URL.createObjectURL(blob);
-
-    console.log(fileCopy.image);
+    dispatch(
+      addCard({
+        image: fileCopy.image,
+        title,
+        person,
+        personImg,
+        date,
+        checkboxValue,
+      })
+    );
     setIsSuccess(true);
-    dispatch(addFormData(fileCopy));
     reset();
-    console.log(fileCopy);
   };
 
   const handleChange = () => {
