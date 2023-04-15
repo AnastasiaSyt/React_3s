@@ -2,15 +2,13 @@ import CardImage from '../CardImage';
 import CardInfo from '../CardInfo';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { selectAllCards } from './formsCardSlice';
-import { type RootState } from '../../redux/store';
+import { type RootState } from '../form/store';
 
-interface IStateCard {
-  id: number;
+export interface ICardData {
   image: string;
   title: string;
-  personImg: string;
   person: string;
+  personImg: string;
   date: string;
   checkboxValue: boolean;
 }
@@ -18,11 +16,10 @@ interface IStateCard {
 const CardsList = () => {
   const cards = useSelector((state: RootState) => state);
   console.log(cards);
-  //   console.log(state);
 
-  const RenderCards = cards.map((card: IStateCard) => (
-    <div className="card" key={card.id}>
-      <CardImage image={card.image} />
+  const RenderCards = cards.formDataList.map((card: ICardData, index: number) => (
+    <div className="card" key={index}>
+      <CardImage imageCard={card.image} />
       <div className="card_title" role="title">
         {card.title}
       </div>

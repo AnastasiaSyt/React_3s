@@ -1,13 +1,14 @@
-/* eslint-disable @typescript-eslint/no-misused-promises */
-import React, { useState } from 'react';
+import React from 'react';
 import '../styles/Form.css';
 import '../styles/Card.css';
 import { useForm, Controller } from 'react-hook-form';
-import CardForm from '../components/CardForm';
+import { useDispatch, useSelector } from 'react-redux';
+import { addFormData, resetFormData } from '../components/form/formActions';
 import CardsList from '../components/form/CardsList';
+import { type RootState } from '../components/form/store';
 
-interface IInputsForm {
-  image: FileList;
+export interface IInputsForm {
+  image: string;
   title: string;
   person: string;
   personImg: string;
@@ -16,8 +17,9 @@ interface IInputsForm {
 }
 
 export default function Form() {
-  const [formDataList, setFormDataList] = useState<IInputsForm[]>([]);
-  const [isSuccess, setIsSuccess] = useState(false);
+  const dispatch = useDispatch();
+  const formDataList = useSelector((state: RootState) => state.formDataList);
+  const [isSuccess, setIsSuccess] = React.useState(false);
 
   const {
     register,
@@ -29,9 +31,13 @@ export default function Form() {
 
   const onSubmit = (data: IInputsForm) => {
     const fileCopy = Object.assign({}, data);
-    fileCopy.image = { ...data.image };
+    const fileImage = data.image?.[0];
+    const blob = new Blob([fileImage], { type: 'application/pdf' });
+    fileCopy.image = URL.createObjectURL(blob);
+
+    console.log(fileCopy.image);
     setIsSuccess(true);
-    setFormDataList([...formDataList, fileCopy]);
+    dispatch(addFormData(fileCopy));
     reset();
     console.log(fileCopy);
   };
@@ -207,14 +213,7 @@ export default function Form() {
               </button>
             </form>
 
-            {/* {isSuccess && <div className="valid">A new card has been created</div>}
-            {formDataList !== null && (
-              <div className="cards">
-                {formDataList.map((formData, index) => (
-                  <CardForm imageCard={formData.image[0]} {...formData} key={index} />
-                ))}
-              </div>
-            )} */}
+            {isSuccess && <div className="valid">A new card has been created</div>}
             <CardsList />
           </div>
         </div>
