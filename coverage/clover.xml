@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1681656417166" clover="3.2.0">
-  <project timestamp="1681656417166" name="All files">
-    <metrics statements="53" coveredstatements="48" conditionals="41" coveredconditionals="31" methods="26" coveredmethods="21" elements="120" coveredelements="100" complexity="0" loc="53" ncloc="53" packages="3" files="14" classes="14"/>
+<coverage generated="1681659187825" clover="3.2.0">
+  <project timestamp="1681659187826" name="All files">
+    <metrics statements="73" coveredstatements="59" conditionals="55" coveredconditionals="38" methods="34" coveredmethods="27" elements="162" coveredelements="124" complexity="0" loc="73" ncloc="73" packages="4" files="15" classes="15"/>
     <package name="components">
-      <metrics statements="38" coveredstatements="35" conditionals="37" coveredconditionals="29" methods="20" coveredmethods="17"/>
+      <metrics statements="40" coveredstatements="36" conditionals="37" coveredconditionals="29" methods="22" coveredmethods="18"/>
       <file name="Card.tsx" path="D:\НАСТЯ\Java Script\Stage 3\Components\React_3s\src\components\Card.tsx">
         <metrics statements="7" coveredstatements="5" conditionals="4" coveredconditionals="3" methods="3" coveredmethods="1"/>
         <line num="12" count="2" type="stmt"/>
@@ -14,20 +14,22 @@
         <line num="20" count="0" type="stmt"/>
         <line num="23" count="3" type="stmt"/>
       </file>
-      <file name="CardForm.tsx" path="D:\НАСТЯ\Java Script\Stage 3\Components\React_3s\src\components\CardForm.tsx">
-        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="14" count="5" type="stmt"/>
-      </file>
       <file name="CardImage.tsx" path="D:\НАСТЯ\Java Script\Stage 3\Components\React_3s\src\components\CardImage.tsx">
         <metrics statements="2" coveredstatements="2" conditionals="9" coveredconditionals="6" methods="1" coveredmethods="1"/>
         <line num="10" count="4" type="stmt"/>
-        <line num="11" count="9" type="stmt"/>
+        <line num="11" count="4" type="stmt"/>
       </file>
       <file name="CardInfo.tsx" path="D:\НАСТЯ\Java Script\Stage 3\Components\React_3s\src\components\CardInfo.tsx">
         <metrics statements="2" coveredstatements="2" conditionals="5" coveredconditionals="5" methods="1" coveredmethods="1"/>
         <line num="11" count="4" type="stmt"/>
-        <line num="12" count="9" type="stmt"/>
+        <line num="12" count="4" type="stmt"/>
+      </file>
+      <file name="CardsList.tsx" path="D:\НАСТЯ\Java Script\Stage 3\Components\React_3s\src\components\CardsList.tsx">
+        <metrics statements="4" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
       </file>
       <file name="Footer.tsx" path="D:\НАСТЯ\Java Script\Stage 3\Components\React_3s\src\components\Footer.tsx">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
@@ -73,37 +75,61 @@
         <line num="10" count="13" type="stmt"/>
       </file>
     </package>
+    <package name="pages">
+      <metrics statements="18" coveredstatements="10" conditionals="14" coveredconditionals="7" methods="6" coveredmethods="5"/>
+      <file name="Form.tsx" path="D:\НАСТЯ\Java Script\Stage 3\Components\React_3s\src\pages\Form.tsx">
+        <metrics statements="18" coveredstatements="10" conditionals="14" coveredconditionals="7" methods="6" coveredmethods="5"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="47" count="0" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
+        <line num="51" count="4" type="stmt"/>
+        <line num="54" count="1" type="stmt"/>
+        <line num="109" count="2" type="stmt"/>
+        <line num="135" count="2" type="stmt"/>
+        <line num="206" count="2" type="stmt"/>
+      </file>
+    </package>
     <package name="redux">
       <metrics statements="8" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
       <file name="ImageSlice.tsx" path="D:\НАСТЯ\Java Script\Stage 3\Components\React_3s\src\redux\ImageSlice.tsx">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="3" count="2" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
-        <line num="15" count="2" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
       </file>
       <file name="formSlice.tsx" path="D:\НАСТЯ\Java Script\Stage 3\Components\React_3s\src\redux\formSlice.tsx">
         <metrics statements="3" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="4" count="2" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
-        <line num="16" count="2" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
       </file>
       <file name="store.tsx" path="D:\НАСТЯ\Java Script\Stage 3\Components\React_3s\src\redux\store.tsx">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="12" count="2" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
       </file>
     </package>
     <package name="services">
       <metrics statements="7" coveredstatements="6" conditionals="4" coveredconditionals="2" methods="3" coveredmethods="2"/>
       <file name="api.tsx" path="D:\НАСТЯ\Java Script\Stage 3\Components\React_3s\src\services\api.tsx">
         <metrics statements="7" coveredstatements="6" conditionals="4" coveredconditionals="2" methods="3" coveredmethods="2"/>
-        <line num="10" count="2" type="stmt"/>
-        <line num="11" count="2" type="stmt"/>
-        <line num="13" count="2" type="stmt"/>
-        <line num="16" count="2" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="11" count="3" type="stmt"/>
+        <line num="13" count="3" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
         <line num="19" count="1" type="cond" truecount="2" falsecount="2"/>
         <line num="24" count="0" type="stmt"/>
-        <line num="29" count="2" type="stmt"/>
+        <line num="29" count="3" type="stmt"/>
       </file>
     </package>
   </project>

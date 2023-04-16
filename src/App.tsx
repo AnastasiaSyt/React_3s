@@ -5,6 +5,8 @@ import About from './pages/About';
 import Main from './pages/Main';
 import Layout from './components/Layout';
 import Form from './pages/Form';
+import '../styles/Form.css';
+import '../styles/Card.css';
 
 function App() {
   return (

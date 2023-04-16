@@ -1,7 +1,5 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import React from 'react';
-import '../styles/Form.css';
-import '../styles/Card.css';
 import { useForm, Controller } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import CardsList from '../components/CardsList';
@@ -67,6 +65,7 @@ export default function Form() {
                 </label>
                 <input
                   type="text"
+                  role="form_title"
                   {...register('title', {
                     required: 'Title is require field',
                     pattern: {
@@ -88,6 +87,7 @@ export default function Form() {
                 </label>
                 <input
                   type="date"
+                  role="form_date"
                   id="date"
                   {...register('date', { required: 'Date is require field' })}
                   className="form_input"
@@ -107,6 +107,7 @@ export default function Form() {
                 rules={{ required: true }}
                 render={({ field }) => (
                   <select
+                    role="person-image"
                     {...field}
                     className="form_input"
                     {...register('person', { required: 'Select is require field' })}
@@ -133,6 +134,7 @@ export default function Form() {
                   render={() => (
                     <input
                       type="checkbox"
+                      role="checkbox"
                       className="form_input"
                       id="checkboxValue"
                       {...register('checkboxValue', { required: true })}
@@ -203,6 +205,7 @@ export default function Form() {
                     render={() => (
                       <input
                         type="file"
+                        role="imageFile"
                         {...register('image', { required: true })}
                         id="file"
                         accept="image/*"
