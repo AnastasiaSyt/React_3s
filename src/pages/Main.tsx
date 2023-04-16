@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchBar from '../components/SearchBar';
 import ImagesCardList from '../components/ImagesCardList';
+import '../styles/Card.css';
 
 const Main = () => {
   return (

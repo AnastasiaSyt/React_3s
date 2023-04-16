@@ -12,12 +12,14 @@ const ImagesCardList = () => {
   console.log(data);
   return (
     <div className="wrapper">
-      {isFetching && <Preloader />}
-      {!isFetching &&
-        data !== null &&
-        data?.results.map((cardData: IImages, index: number) => (
-          <Card cardData={cardData} key={index} />
-        ))}
+      <div className="cards">
+        {isFetching && <Preloader />}
+        {!isFetching &&
+          data !== null &&
+          data?.results.map((cardData: IImages, index: number) => (
+            <Card cardData={cardData} key={index} />
+          ))}
+      </div>
     </div>
   );
 };

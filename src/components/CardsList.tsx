@@ -27,11 +27,7 @@ const CardsList = () => {
     </div>
   ));
 
-  return (
-    <section>
-      <h2>cards</h2>
-      {RenderCards}
-    </section>
-  );
+  return <section className="cards">{RenderCards}</section>;
 };
+
 export default CardsList;
