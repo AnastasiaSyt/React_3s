@@ -9,10 +9,10 @@ import Card from './Card';
 const ImagesCardList = () => {
   const { search } = useSelector((state: RootState) => state.images);
   const { data, isFetching } = useGetImagesQuery(search.length !== 0 ? search : undefined);
-  console.log(data);
+
   return (
     <div className="wrapper">
-      <div className="cards">
+      <div className="cards" role="cards">
         {isFetching && <Preloader />}
         {!isFetching &&
           data !== null &&

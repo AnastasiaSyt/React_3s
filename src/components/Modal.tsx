@@ -1,5 +1,4 @@
 import React, { type FC } from 'react';
-import '../styles/Modal.css';
 import { type ITag, type IImages } from '../types/IImages';
 import Tag from './Tag';
 
@@ -19,7 +18,7 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, cardData }) => {
               &times;
             </span>
             <div className="modal_content">
-              <div className="modal_image">
+              <div className="modal_image" role="modal_image">
                 <img
                   src={cardData.urls.regular}
                   alt={cardData.alt_description}
@@ -29,13 +28,15 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, cardData }) => {
               <div className="modal_info">
                 <div className="modal_top">
                   {cardData.description !== null && (
-                    <div className="modal_title">{cardData.description}</div>
+                    <div className="modal_title" role="modal_title">
+                      {cardData.description}
+                    </div>
                   )}
                   {cardData.description === null && (
                     <div className="modal_title">{cardData.alt_description}</div>
                   )}
                   <div className="modal_author_info">
-                    <div className="modal_author">
+                    <div className="modal_author" role="modal_author">
                       <img
                         className="modal_author_avatar"
                         src={cardData.user.profile_image.medium}
@@ -43,7 +44,7 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, cardData }) => {
                       />
                       <div className="modal_author_name">{cardData.user.name}</div>
                     </div>
-                    <div className="modal_date">
+                    <div className="modal_date" role="modal_date">
                       {new Date(cardData.updated_at).toLocaleDateString()}
                     </div>
                   </div>
@@ -70,16 +71,16 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, cardData }) => {
                   </div>
                 </div>
                 <div className="modal_bottom">
-                  {cardData.user.social.instagram_username !== null && (
+                  {cardData.user.social?.instagram_username !== null && (
                     <div className="modal_instagram">
                       <img src="../public/mdi_instagram.svg" className="modal_icon"></img>
-                      <div>{cardData.user.social.instagram_username}</div>
+                      <div>{cardData.user.social?.instagram_username}</div>
                     </div>
                   )}
-                  {cardData.user.social.twitter_username !== null && (
+                  {cardData.user.social?.twitter_username !== null && (
                     <div className="modal_twitter">
                       <img src="../public/iconoir_twitter.svg" className="modal_icon"></img>
-                      <div>{cardData.user.social.twitter_username}</div>
+                      <div>{cardData.user.social?.twitter_username}</div>
                     </div>
                   )}
                   <div className="modal_license">

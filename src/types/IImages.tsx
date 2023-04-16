@@ -39,7 +39,7 @@ export interface ISocial {
   instagram_username: string;
   paypal_email: null;
   portfolio_url: string;
-  twitter_username: string;
+  twitter_username: string | null;
 }
 
 export interface IUser {
@@ -55,11 +55,11 @@ export interface IUser {
   name: string;
   portfolio_url: string;
   profile_image: IProfileImg;
-  social: ISocial;
+  social: ISocial | undefined;
   total_collections: number;
   total_likes: number;
   total_photos: number;
-  twitter_username: string;
+  twitter_username?: string | null;
   updated_at: string;
   username: string;
 }
@@ -76,10 +76,10 @@ export interface IImages {
   liked_by_user: boolean;
   likes: number;
   links: ILinks;
-  promoted_at: string;
+  promoted_at: string | null;
   sponsorship: null;
   tags: ITag[];
-  topic_submissions?: { nature: { status: string; approved_on: string } };
+  topic_submissions?: { nature: { status: string; approved_on: string } } | object;
   updated_at: string;
   urls: IUrls;
   user: IUser;

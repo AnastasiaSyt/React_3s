@@ -22,7 +22,7 @@ const Card: FC<CardProps> = ({ cardData }: CardProps) => {
 
   return (
     <>
-      <div className="card" onClick={handleCardClick}>
+      <div className="card" onClick={handleCardClick} role="card">
         <CardImage item={cardData.urls} />
         {cardData.description !== null && (
           <div className="card_title" role="title">

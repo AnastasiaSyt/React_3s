@@ -15,19 +15,20 @@ export interface ICardData {
 
 const CardsList = () => {
   const { formDataList } = useSelector((state: RootState) => state.form);
-  console.log(formDataList);
 
-  const RenderCards = formDataList.map((card: ICardData, index: number) => (
-    <div className="card" key={index}>
-      <CardImage imageCard={card.image} />
-      <div className="card_title" role="title">
-        {card.title}
-      </div>
-      <CardInfo person={card.person} personImg={card.personImg} date={card.date} />
-    </div>
-  ));
-
-  return <section className="cards">{RenderCards}</section>;
+  return (
+    <section className="cards">
+      {formDataList?.map((card: ICardData, index: number) => (
+        <div className="card" key={index}>
+          <CardImage imageCard={card.image} />
+          <div className="card_title" role="title">
+            {card.title}
+          </div>
+          <CardInfo person={card.person} personImg={card.personImg} date={card.date} />
+        </div>
+      ))}
+    </section>
+  );
 };
 
 export default CardsList;
