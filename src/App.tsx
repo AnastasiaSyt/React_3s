@@ -8,31 +8,37 @@ import Form from './pages/Form';
 import './styles/Form.css';
 import './styles/Card.css';
 
+// function App() {
+//   return (
+//     <BrowserRouter>
+//       <Routes>
+//         <Route path="/" element={<Layout />}>
+//           <Route index element={<Main />} />
+//           <Route path="main" element={<Main />} />
+//           <Route path="about" element={<About />} />
+//           <Route
+//             path="form"
+//             element={
+//               <Form
+//                 titleRef={React.createRef()}
+//                 dateRef={React.createRef()}
+//                 publishRef={React.createRef()}
+//                 authorRef={React.createRef()}
+//                 fileRef={React.createRef()}
+//               />
+//             }
+//           />
+//           <Route path="*" element={<ErrorPage />} />
+//         </Route>
+//       </Routes>
+//     </BrowserRouter>
+//   );
+// }
+
+// export default App;
+
 function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Main />} />
-          <Route path="main" element={<Main />} />
-          <Route path="about" element={<About />} />
-          <Route
-            path="form"
-            element={
-              <Form
-                titleRef={React.createRef()}
-                dateRef={React.createRef()}
-                publishRef={React.createRef()}
-                authorRef={React.createRef()}
-                fileRef={React.createRef()}
-              />
-            }
-          />
-          <Route path="*" element={<ErrorPage />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  );
+  return <div>Hello</div>;
 }
 
 export default App;

@@ -16,5 +16,9 @@
     "resolveJsonModule": true,
     "noEmit": true
   },
-  "include": ["./src/**/*", "styled.d.ts"]
+  "include": ["./src/**/*", "styled.d.ts"],
+  "ts-node": {
+    "esm": true,
+    "transpileOnly": true,
+  }
 }
