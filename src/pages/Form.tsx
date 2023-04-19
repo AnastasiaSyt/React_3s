@@ -56,7 +56,7 @@ export default function Form() {
       <div className="wrapper">
         <h1 className="main_title">Form</h1>
         This is form to create new post
-        <div className="form">
+        {/* <div className="form">
           <div>
             <form onSubmit={handleSubmit(onSubmit)} onChange={handleChange} className="form_post">
               <div>
@@ -226,7 +226,7 @@ export default function Form() {
             {isSuccess && <div className="valid">A new card has been created</div>}
             <CardsList />
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

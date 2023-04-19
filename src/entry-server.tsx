@@ -6,13 +6,13 @@ import ReactDOMServer, {
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import { StaticRouter } from 'react-router-dom/server';
-import App from './App';
+import AppRouter from './AppRouter';
 
 export function render(url: string, options?: RenderToPipeableStreamOptions): PipeableStream {
   const stream = ReactDOMServer.renderToPipeableStream(
     <Provider store={store}>
       <StaticRouter location={url}>
-        <App />
+        <AppRouter />
       </StaticRouter>
     </Provider>,
     options
