@@ -9,8 +9,8 @@ const Main = () => {
   return (
     <div className="App">
       <div className="wrapper search_main">
-        {/* <SearchBar />
-        <ImagesCardList /> */}
+        <SearchBar />
+        <ImagesCardList />
       </div>
     </div>
   );

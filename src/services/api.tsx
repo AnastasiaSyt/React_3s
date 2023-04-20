@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { type IImages } from '../types/IImages';
+import { IImages } from '../types/IImages';
 
 interface ICardsImages {
   results: IImages[];
@@ -21,7 +21,7 @@ export const unsplashAPI = createApi({
           : `/search/photos?&per_page=9&page=1&query=randome&client_${apiKey}`,
     }),
     getImage: builder.query<IImages, string>({
-      query: (id) => `${baseURL}/photos/${id}?client_${apiKey}`,
+      query: (id: string) => `${baseURL}/photos/${id}?client_${apiKey}`,
     }),
   }),
 });

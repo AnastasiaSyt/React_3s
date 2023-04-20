@@ -18,7 +18,7 @@
     border: none;
     width: 100%;
     padding: 9px 4px 9px 40px;
-    background: transparent url("../../public/search-outline.svg") no-repeat 13px center;
+    background: transparent url("../../search-outline.svg") no-repeat 13px center;
     color: white;
 }
 

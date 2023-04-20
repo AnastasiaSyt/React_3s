@@ -56,7 +56,7 @@ export default function Form() {
       <div className="wrapper">
         <h1 className="main_title">Form</h1>
         This is form to create new post
-        {/* <div className="form">
+        <div className="form">
           <div>
             <form onSubmit={handleSubmit(onSubmit)} onChange={handleChange} className="form_post">
               <div>
@@ -152,46 +152,46 @@ export default function Form() {
                   <input
                     className="radio"
                     type="radio"
-                    value="../public/tracy.png"
+                    value="../tracy.png"
                     {...register('personImg', { required: true })}
                   />{' '}
-                  <img className="radio-tile" src="../public/tracy.png" />
+                  <img className="radio-tile" src="../tracy.png" />
                 </div>
                 <div className="radio_container">
                   <input
                     type="radio"
                     className="radio"
-                    value="../public/jason.png"
+                    value="../jason.png"
                     {...register('personImg', { required: true })}
                   />{' '}
-                  <img className="radio-tile" src="../public/jason.png" />
-                </div>
-                <div className="radio_container">
-                  <input
-                    type="radio"
-                    className="radio"
-                    {...register('personImg', { required: true })}
-                    value="../public/lizzy.png"
-                  />{' '}
-                  <img className="radio-tile" src="../public/lizzy.png" />
+                  <img className="radio-tile" src="../jason.png" />
                 </div>
                 <div className="radio_container">
                   <input
                     type="radio"
                     className="radio"
                     {...register('personImg', { required: true })}
-                    value="../public/ernie.png"
+                    value="../lizzy.png"
                   />{' '}
-                  <img className="radio-tile" src="../public/ernie.png" />
+                  <img className="radio-tile" src="../lizzy.png" />
                 </div>
                 <div className="radio_container">
                   <input
                     type="radio"
                     className="radio"
                     {...register('personImg', { required: true })}
-                    value="../public/eric.png"
+                    value="../ernie.png"
                   />{' '}
-                  <img className="radio-tile" src="../public/eric.png" />
+                  <img className="radio-tile" src="../ernie.png" />
+                </div>
+                <div className="radio_container">
+                  <input
+                    type="radio"
+                    className="radio"
+                    {...register('personImg', { required: true })}
+                    value="../eric.png"
+                  />{' '}
+                  <img className="radio-tile" src="../eric.png" />
                 </div>
                 {errors.personImg != null && <span className="error">Choose avatar</span>}
               </div>
@@ -226,7 +226,7 @@ export default function Form() {
             {isSuccess && <div className="valid">A new card has been created</div>}
             <CardsList />
           </div>
-        </div> */}
+        </div>
       </div>
     </div>
   );

@@ -9,7 +9,7 @@ export default function Footer() {
           AnastasiaSyt
         </a>
         <a className="logo_rsschool" href="https://rs.school">
-          <img src="../../public/rs_school.png" alt="logo rs school" />
+          <img src="../../rs_school.png" alt="logo rs school" />
         </a>
       </div>
     </div>
