@@ -14,6 +14,7 @@ module.exports = {
     'prettier',
     'plugin:react-hooks/recommended',
     'plugin:prettier/recommended',
+    'plugin:cypress/recommended',
     // "@babel/core"
   ],
   overrides: [],
