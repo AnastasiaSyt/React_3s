@@ -20,10 +20,7 @@
     "cy:run-e2e": "cypress run --e2e",
     "cy:run-unit": "cypress run --component",
     "cy:e2e": "start-server-and-test start http-get://localhost:5173 cypress && npx nyc report --reporter=html && open coverage/index.html",
-    "cy": "npx rimraf coverage && npx rimraf .nyc_output && start-server-and-test dev http://localhost:5173 cypress && npx open-cli coverage/lcov-report/index.html",
-    "e2e": "start-server-and-test start http://localhost:5173 cypress && nyc",
-    "cover": "cypress run --browser chrome && cypress open && npx nyc report --reporter=html && open coverage/index.html",
-    "nana": "npx rimraf coverage && npx rimraf .nyc_output && start-server-and-test dev http://localhost:5173 cypress"
+    "cy": "npx rimraf coverage && npx rimraf .nyc_output && start-server-and-test dev http://localhost:5173 cypress && npx open-cli coverage/lcov-report/index.html"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
